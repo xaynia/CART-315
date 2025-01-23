@@ -38,13 +38,38 @@ From testing the game these were the changes I had to implement:
 			print('may your soul\nrest in peace...\n   you won!',player.x-54,player.y-15)
 - I added platforms to get back up the steep pit at the start of the game, as to not be stuck down there. I also made the platforms to get the next mountain trickier to get to to make it harder. I tested getting the "perfect" jump to one platform, where you just make it, and then copy and pasted and stamped the next 2 platforms, so the game wouldn't be too easy. I did this with spikes too, like with the false grave at the bottom.
 - Testing the flags took some times. For example, the spikes would send you back to the start of the game. I ended up adding additional spikes and making some of the false graves trickier to get to with more traps and spikes which could send you back to the start.
-- 
+- After a few playthroughs, I made various small tweaks, such as adding a tunnel to make it a little more interesting, adding flowers, increasing difficulty between platforms, adding more spikes to make the game more challenging.
 
 **Future Improvements:**
 - Adding music to the game would be great. Adding characters such as NPC monsters which move around and damage you would be really fun too. Adding objects like coins would also be a really great addition. It would have been fun to add more details and features, and while I think there is always room for improvements, I am satisfied with baseline game. 
 
+**Notes about Testing Bitsy:**
+- I really liked the dialogue and simplicity with Bitsy. I spent a decent amount of time trying to figure out how to use it, seeing if I could add more than 3 colors into the color palette with the code. After I decided 3 colors wouldn't work (and a youtuber who confirmed I should infact stop) for my idea I decided to try Pico-8. I felt like I had a solid plan with my original idea. It was supposed to be a relatively fast game but have impactful dialogue about changes in life. From the games I tested in Bitsy, my favourite part about them is how impactful they can be, from this perspective. 
+- Favourite Bitsy Games I tested:
+https://zenzoa.itch.io/wandering-home 
+https://le-onionboi.itch.io/spoons
+https://lolabug.itch.io/no-longer-human
 
-
+**Notes about Ghost Tale & Pico-8:**
+- I felt like I needed a plan intially, and even though I went into Pico-8 with no plan, the funnest part about creating Ghost Tale was actually that I had absolutely no plan, and went into a state of flow, rather. I decided to watch a youtube video of someone who learned Pico-8 in a day and made a game, and mentioned NerdyTeachers https://nerdyteachers.com/Explain/Platformer/ platformer series which helped me. After brainstorming a few ideas about a character, I chose a cute ghost. As for the movement, the ghost would just bob. From there, I had alot of fun designing platforms with an aesthetic which would match the ghost theme. From there I had alot of fun figuring out how Pico-8 works, laying the tiles I created, and testing movement and interaction, etc. I started laying tiles, and put a pit at the start of the game. I realized quickly that when the ghost fell down the pit, the camera did not follow. This required adjusting the update functions player.x variable. Once this was fixed I had so much fun designing the world! I realized I would need a way to end the game however, so I thought a treasure chest could work intially. After thinking about it some more, I thought finding the ghosts gravestone would make a good plot, so I went with that idea. From here I started testing flags, and realized I would need to add a message when you interact with them, which I added in the _Draw function. Once I got this working I thought adding false gravestones would be fun too, so I designed the false gravestone with a different flag and placed 3 of those in the world too. After this I would keep implementing changes, running the game and testing it, and repeat, until I was happy with the finished product.
+- Camera e.g: 	
+	cam_x=player.x-64+(player.w/2)
+	if cam_x<map_start then
+				cam_x=map_start
+	end
+	if cam_x>map_end-128 then
+				cam_x=map_end-128
+	end
+	camera(cam_x,player.y-64)
+end
+- Gravestone Win condition Flag e.g:
+  function _draw()
+	cls()
+	map(0,0)
+	spr(player.sp,player.x,player.y,1,1,player.flp) 
+	
+	print('your soul wanders restlessly \n you must find your grave',124,54)
+	print('press x to jump',30,82)
 
 
 2. **Title:**  
