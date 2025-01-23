@@ -19,13 +19,15 @@
    - Driftwood: May reveal objects, perhaps carvings, for the player to see. Maybe even symbolic of people.
    - Sea glass: Symbolizes transformation. Even from the roughest of seas, can bring a beautiful gem.
    - Shell: Triggers a childhood memory, about simpler times.
-   - Fishing net: Could 
+   - Fishing net: 
 
 
+**Update: Changed Game: Ghost Tale
+After testing Bitsy, I felt it was too primitive and decided to switch over to pico-8—and I’m so glad I did! I started by designing a ghost and built a platformer around it. The learning curve was steep, but once I got the hang of the code, it became a blast to create. I ended up making a game about a ghost whose soul is restless, roaming around an area filled with graves. I added three trick graves with spike traps, detours, and tricky-to-reach platforms. At the very edge of the map is the ghost’s real grave, which marks the end of the game. Testing it was definitely the most fun part!
 
+The biggest pit of the entire process happened when I used the selector tool to erase tiles and accidentally pressed “delete” with nothing selected. A huge chunk of tiles vanished in an instant. Note to self: always save immediately when I’m happy with my progress!
 
-
-   - Character Dialogue:
+I decided to purchase pico-8, and I’m so glad I learned it. Yes, the learning curve is steep, but NerdyTeachers on YouTube helped me a lot. I’ll definitely be making more games in pico-8, and I had so much fun designing this one! If I could go back in time, I’d have started earlier, because the deeper I got into testing, the more features I wanted to add, and suddenly there wasn’t enough time. Overall, though, I’m very happy with how everything turned out!
 
 
 
