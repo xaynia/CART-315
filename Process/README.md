@@ -1,6 +1,8 @@
 # Process Journal
 
-**Process Journal* "diary, reflection on the status of the project, references, images and anything else that captures the normal elements of design and development as it happens."
+** Note for self:**
+- Journal: diary, reflection on the status of the project, references, images and anything else that captures the normal elements of design and development as it happens."
+- thoughts and reflections throughout the process of prototyping games (e.g.,discussing the design goals for the current idea, what you made to test those ideas, what your take away from the prototype was, and what you intend to accomplish next. 
 
 ## Design Journal
 
