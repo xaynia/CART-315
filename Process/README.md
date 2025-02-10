@@ -79,3 +79,94 @@ end
    ...
 
 
+## Week 2
+Note: I emailed you about this week.
+
+## Week 3
+This week, I focused on setting up my development environment (Rider and Unity), organizing my GitHub repository, and diving into the [Unity Essentials](https://learn.unity.com/pathway/unity-essentials) pathway on Unity Learn. I logged **15 hours** of work (tracked via Toggl) which included:
+
+- Installing and configuring Rider and Unity  
+- Reviewing Unity basics through tutorials and reading documentation  
+- Consolidating notes and references from the tutorials  
+- Committing tutorial progress to GitHub under a new `Tutorials` folder  
+
+These foundational steps have helped me feel more comfortable and confident using Unity. My next goal is to apply everything I’ve learned by starting a new prototype and brainstorming my own game ideas.
+
+## What I Accomplished
+
+1. **Fixed Github Repository**  
+   - Fixed GitHub repository, pushed tutorial progress according to MDM guidelines (each commit includes a brief message and reflection).  
+   - Configured Rider with Unity for scripting in C#.  
+   - All tutorial work is safely pushed to GitHub in a dedicated tutorials folder within projects folder.
+
+2. **Unity Learn:** [Essentials Pathway](https://learn.unity.com/pathway/unity-essentials%29)
+   - **Editor Essentials**  
+   - **3D Essentials**  
+   - **Audio Essentials**  
+   - **Programming Essentials**  
+
+   Each mission took roughly two hours, and I worked step-by-step through videos and instructions. These covered scene navigation, prefab creation, physics materials, audio sources/listeners, basic scripting (C#), and more. Completing these has given me a solid grasp of the Unity Editor’s core concepts.
+
+
+**Just a few of the [photos (link to Github photos folder)](https://github.com/xaynia/CART-315/tree/main/Process/Images/W3) I documented:**
+   ![Ball-ramp-test-collison](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Ball-ramp-test-collison.png)
+
+Creating a horse mural:
+![Mural-before](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Mural-before.png)
+
+![Mural-after](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Mural-after.png)
+
+Finding hidden numbers for Unity's launch year, and getting fireworks:
+![Hidden-number-0](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Hidden-number-0.png)
+
+![Hidden-number](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Hidden-number.png)
+
+![Fireworks](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Fireworks.png)
+
+
+4. **Notes & References**  
+   - **[Compiled detailed study notes](https://docs.google.com/document/d/19Ob0PXCKj5om9A9qJfeEV1U9GgErxdfeat1Ouwohhno/edit?usp=sharing)** (with screenshots) in a separate Google Doc. Because of the volume of images and formatting, I decided not to include them _directly_ in my GitHub process journal, but linked to this doc for reference.  
+   - These notes include step-by-step instructions for Unity basics like game objects, materials, collisions, physics, and audio.
+   - The notes include highlights from tutorials and much more photos as well.
+   - Creating these notes will be cumulative – they help me consolidate information.
+
+5. **Toggl Track Time Logged**  
+   - Spent a total of **15 hours** on setup, tutorials, reading, and documentation for this week.
+
+## Reflections
+
+- **MDM Framework:** While most of my commits so far are tutorial-based, I’m practicing good habits by writing short reflections in each commit message. Even though these were guided by Unity’s lessons rather than my own design decisions, it’s good practice to capture what I learned and why it’s relevant.  
+- **Comfort Level:** I feel more at home in the Unity interface now— I think getting over this inital hump was the biggest challenge. I feel particularly much more at ease navigating unity (e.g., using the scene view, using transform tools, and setting up basic scripts in Rider). The tutorials were very thorough and gave me plenty of hands-on practice, helping me feel confident navigating in Unity.  
+- **Challenges & Insights:**  
+	 - Navigating Rider remains something I need to get used to. I think more practice will definitely help!
+  - Some tutorials can feel long, especially with the long hours I put into catching up, however the repetition helped solidify my understanding. Despite this, I will say, that learning the many nuances of the Editor (e.g., global vs. local coordinates, pivot vs. center modes) was very fun. 
+ 
+
+## Next Steps
+
+1. **Prototype Brainstorming**  
+   - Begin brainstorming on a small unique game concept to apply these new skills.  
+   - Narrow down a simple mechanic or theme to implement first—something I can build, test, and iterate on.
+   - Start implementing weekly class content into a prototype.
+
+2. **Rapid Prototyping & Iteration**  
+   - Implement MDM framework more intentionally as I start my own project. For each “design move,” I’ll commit with a short reflection about my intent, changes, and next steps.  
+   - Conduct quick playtests (even if it’s just me or a friend) to inform how I tweak gameplay mechanics.
+
+3. **Add to the Process Journal**  
+   - Continue writing weekly entries like this one.  
+   - Potentially integrate a short “artist’s statement” or “manifesto” to clarify my game’s core idea once I have it.  
+
+## Highlights
+- **Repository:** Fully set up with a clear folder structure
+- **Tools:** Rider + Unity successfully configured (no more environment issues).  
+- **Unity Essentials Missions Completed:**  
+  - Editor Essentials  
+  - 3D Essentials  
+  - Audio Essentials  
+  - Programming Essentials  
+- **Notes/Reference:** Created a robust reference document [Google Doc](https://docs.google.com/document/d/19Ob0PXCKj5om9A9qJfeEV1U9GgErxdfeat1Ouwohhno/edit?usp=sharing) with screenshots and detailed steps.  
+- **Hours Logged:** 15 hours this week.  
+- **Ready to Apply:** Confident with Unity’s interface and excited to brainstorm and build my first prototype. My goal is to start implementing weekly class content into a prototype.
+
+
