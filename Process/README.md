@@ -78,11 +78,6 @@ end
 	print('your soul wanders restlessly \n you must find your grave',124,54)
 	print('press x to jump',30,82)
 
-
-2. **Title:**  
-   ...
-
-
 # Week 3
 Note: I emailed you about this week.
 
