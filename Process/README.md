@@ -6,7 +6,7 @@
 
 ## Design Journal
 
-# Week 1: Tiny Game
+# Week 1-2: Tiny Game
 
    After reflecting, and playing various inspiring Bitsy games, I have narrowed my focus to a Bitsy game. I like the dialogue, and simplistic art style. 
 
