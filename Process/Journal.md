@@ -1,10 +1,10 @@
 # Process Journal
 
-** Note for self:**
-- Journal: diary, reflection on the status of the project, references, images and anything else that captures the normal elements of design and development as it happens."
-- thoughts and reflections throughout the process of prototyping games (e.g.,discussing the design goals for the current idea, what you made to test those ideas, what your take away from the prototype was, and what you intend to accomplish next. 
+> **Note for self:**
+>- **Journal:** diary, reflection on the status of the project, references, images and anything else that captures the normal elements of design and development as it happens.
+>- thoughts and reflections throughout the process of prototyping games (e.g.,discussing the design goals for the current idea, what you made to test those ideas, what your take away from the prototype was, and what you intend to accomplish next.) 
 
-## Design Journal
+---
 
 # Week 1-2: Tiny Game
 
@@ -79,7 +79,7 @@ end
 	print('press x to jump',30,82)
 
 # Week 3
-Note: I emailed you about this week.
+>Note: I emailed you about this week.
 
 # Week 4
 This week, I focused on setting up my development environment (Rider and Unity), organizing my GitHub repository, and diving into the [Unity Essentials](https://learn.unity.com/pathway/unity-essentials) pathway on Unity Learn. I logged **15 hours** of work (tracked via Toggl) which included:
@@ -110,12 +110,12 @@ These foundational steps have helped me feel more comfortable and confident usin
 **Just a few of the [photos (link to Github photos folder)](https://github.com/xaynia/CART-315/tree/main/Process/Images/W4) I documented:**
    ![Ball-ramp-test-collison](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Ball-ramp-test-collison.png)
 
-Creating a horse mural:
+### Creating a horse mural:
 ![Mural-before](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Mural-before.png)
 
 ![Mural-after](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Mural-after.png)
 
-Finding hidden numbers for Unity's launch year, and getting fireworks:
+### Finding hidden numbers for Unity's launch year, and getting fireworks:
 ![Hidden-number-0](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Hidden-number-0.png)
 
 ![Hidden-number](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Hidden-number.png)
@@ -168,7 +168,6 @@ Finding hidden numbers for Unity's launch year, and getting fireworks:
 - **Hours Logged:** 15 hours this week.  
 - **Ready to Apply:** Confident with Unity’s interface and excited to brainstorm and build my first prototype. My goal is to start implementing weekly class content into a prototype.
 
-----
 
 # Week 5: Feb 13
 **Exploration Prototype 3 – Design Journal**
@@ -179,11 +178,20 @@ I set out to recreate the magical feeling of Summit One Vanderbilt’s mirrored 
 
 I also experimented with **singleton** usage to manage and track all the spawned spheres. While testing collisions, I ran into the frustrating problem of spheres either knocking the player over or passing through the ground when set to “Is Trigger.” After multiple attempts (including placing triggers on the spheres themselves), I eventually found that adding a **trigger collider** to the player worked best—allowing the spheres to collide normally with the ground but not shove the player around. Although I never fully got the spheres to disappear upon touching the player in this prototype, I tested two different collision setups (on the sphere vs. on the player) and learned a lot about Unity’s physics layers, triggers, and the basics of singletons.
 
-Overall, I spent around **8 hours** coding and refining collisions, plus about **3 hours and 20 minutes** reading and note-taking, which I [uploaded to GitHub](https://github.com/xaynia/CART-315/blob/main/Process/Images/Notes/Week%205%20Book%20Notes.pdf). My next goals are to add more bounciness to the spheres, let the player interact with them more (like bouncing them around), and possibly implement a scoring system to further encourage engagement. Despite the challenges, the prototype now successfully spawns an endless “rain” of spheres inspired by Summit One Vanderbilt, and I have a much better grasp on how to combine singletons, colliders, and triggers for future projects.
+Overall, I spent around **8 hours** coding and refining collisions, plus about **3 hours and 20 minutes** reading and note-taking (tracked via Toggl Track), which I [uploaded to GitHub](https://github.com/xaynia/CART-315/blob/main/Process/Images/Notes/Week%205%20Book%20Notes.pdf). My next goals are to add more bounciness to the spheres, let the player interact with them more (like bouncing them around), and possibly implement a scoring system to further encourage engagement. Despite the challenges, the prototype now successfully spawns an endless “rain” of spheres inspired by Summit One Vanderbilt, and I have a much better grasp on how to combine singletons, colliders, and triggers for future projects.
 
 ![Falling Spheres](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSpheres.png)
 
 ![Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
+
+## Reflection
+This felt like my first time using Unity without "training wheels" (i.e.: practicing Unity Learn tutorials, reading about Unity, or taking notes), which made starting my first Unity project from scratch both overwhelming and relieving (to finally be practicing what I have learned) at the same time.  
+
+I met my goal of starting a prototype this week! I am very happy about that. Tracking my time in Toggltrack has been very helpful for me to figure out how to have a better week the next week, as well as manage my time. I feel like I am getting better at navigating Github, and Rider, and Unity too – even if it feels overwhelming at times (mainly because of how much there is to know in Unity before you even use it).
+
+
+Currently I'm trying to find the right balance between learning and practicing in Unity. I plan to keep sprinkling in more guided Unity Learn tutorials (scripting and smaller game tutorials, currently), because they help me feel more comfortable using Unity. And I also plan to start start working on my weekly prototypes earlier in the week too. I think learning and practicing in Unity is exactly what I need to be doing before I can come up with a concrete idea for my final project – but I do plan on starting to checkout more Youtube videos to get ideas flowing too. 
+
 
 ## Key Accomplishments & Notes
 
@@ -204,7 +212,7 @@ Overall, I spent around **8 hours** coding and refining collisions, plus about *
 - ~8 hours on scripting, testing, and collision troubleshooting.
 - ~3 hours of reading/documentation, posted to GitHub.
 
-### Next Steps
+### Prototype Potential Next Steps
 - Increase sphere bounciness and add more interactivity (possibly a scoring mechanic).
 - Continue refining player interactions—pushing or bouncing the spheres.
 
@@ -214,4 +222,5 @@ Overall, I spent around **8 hours** coding and refining collisions, plus about *
 - [Single Sphere](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/Single-sphere.png)  
 - [Falling Spheres](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSpheres.png)  
 - [Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
+- [Github Images and Notes Log](https://github.com/xaynia/CART-315/tree/main/Process/Images)  
 
