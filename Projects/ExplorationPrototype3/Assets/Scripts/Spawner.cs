@@ -37,20 +37,20 @@ public class Spawner : MonoBehaviour {
 
       // Scale each existing sphere down
       foreach (GameObject sphere in spawnedSpheres) {
-         float scale = sphere.transform.localScale.x;
-         scale *= scalingFactor;
-         sphere.transform.localScale = Vector3.one * scale;
-
-         // If it’s too small, mark it for removal
-         if (scale <= 0.1f) {
-            removeList.Add(sphere);
-         }
-      }
-      
-      // Now remove flagged spheres
-      foreach (GameObject sphere in removeList) {
-         spawnedSpheres.Remove(sphere);
-         Destroy(sphere);
+      //    float scale = sphere.transform.localScale.x;
+      //    scale *= scalingFactor;
+      //    sphere.transform.localScale = Vector3.one * scale;
+      //
+      //    // If it’s too small, mark it for removal
+      //    if (scale <= 0.1f) {
+      //       removeList.Add(sphere);
+      //    }
+      // }
+      //
+      // // Now remove flagged spheres
+      // foreach (GameObject sphere in removeList) {
+      //    spawnedSpheres.Remove(sphere);
+      //    Destroy(sphere);
       }
    }
 }
