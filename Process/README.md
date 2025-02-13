@@ -6,7 +6,8 @@
 
 ## Design Journal
 
-1. **Week 1: Tiny Game**  
+# Week 1: Tiny Game
+
    After reflecting, and playing various inspiring Bitsy games, I have narrowed my focus to a Bitsy game. I like the dialogue, and simplistic art style. 
 
    The scene is at the shore. A raven sits there. An orca resides in the water. The characters journey is about finding guidance and comfort in nature at the shore, as they drift on their way to finding their purpose. 
@@ -49,8 +50,11 @@ I really enjoy platformer games. Some of my favourites are Super Mario Bros Wond
 **Notes about Testing Bitsy:**
 - I really liked the dialogue and simplicity with Bitsy. I spent a decent amount of time trying to figure out how to use it, seeing if I could add more than 3 colors into the color palette with the code. After I decided 3 colors wouldn't work (and a youtuber who confirmed I should infact stop) for my idea I decided to try Pico-8. I felt like I had a solid plan with my original idea. It was supposed to be a relatively fast game but have impactful dialogue about changes in life. From the games I tested in Bitsy, my favourite part about them is how impactful they can be, from this perspective. 
 - Favourite Bitsy Games I tested:
-https://zenzoa.itch.io/wandering-home 
+  
+https://zenzoa.itch.io/wandering-home
+
 https://le-onionboi.itch.io/spoons
+
 https://lolabug.itch.io/no-longer-human
 
 **Notes about Ghost Tale & Pico-8:**
@@ -79,10 +83,10 @@ end
    ...
 
 
-## Week 2
+# Week 3
 Note: I emailed you about this week.
 
-## Week 3
+# Week 4
 This week, I focused on setting up my development environment (Rider and Unity), organizing my GitHub repository, and diving into the [Unity Essentials](https://learn.unity.com/pathway/unity-essentials) pathway on Unity Learn. I logged **15 hours** of work (tracked via Toggl) which included:
 
 - Installing and configuring Rider and Unity  
@@ -108,20 +112,20 @@ These foundational steps have helped me feel more comfortable and confident usin
    Each mission took roughly two hours, and I worked step-by-step through videos and instructions. These covered scene navigation, prefab creation, physics materials, audio sources/listeners, basic scripting (C#), and more. Completing these has given me a solid grasp of the Unity Editor’s core concepts.
 
 
-**Just a few of the [photos (link to Github photos folder)](https://github.com/xaynia/CART-315/tree/main/Process/Images/W3) I documented:**
-   ![Ball-ramp-test-collison](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Ball-ramp-test-collison.png)
+**Just a few of the [photos (link to Github photos folder)](https://github.com/xaynia/CART-315/tree/main/Process/Images/W4) I documented:**
+   ![Ball-ramp-test-collison](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Ball-ramp-test-collison.png)
 
 Creating a horse mural:
-![Mural-before](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Mural-before.png)
+![Mural-before](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Mural-before.png)
 
-![Mural-after](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Mural-after.png)
+![Mural-after](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Mural-after.png)
 
 Finding hidden numbers for Unity's launch year, and getting fireworks:
-![Hidden-number-0](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Hidden-number-0.png)
+![Hidden-number-0](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Hidden-number-0.png)
 
-![Hidden-number](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Hidden-number.png)
+![Hidden-number](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Hidden-number.png)
 
-![Fireworks](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W3/Fireworks.png)
+![Fireworks](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W4/Fireworks.png)
 
 
 4. **Notes & References**  
@@ -169,4 +173,50 @@ Finding hidden numbers for Unity's launch year, and getting fireworks:
 - **Hours Logged:** 15 hours this week.  
 - **Ready to Apply:** Confident with Unity’s interface and excited to brainstorm and build my first prototype. My goal is to start implementing weekly class content into a prototype.
 
+----
+
+# Week 5: Feb 13
+**Exploration Prototype 3 – Design Journal**
+
+![Single Sphere](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/Single-sphere.png)
+
+I set out to recreate the magical feeling of Summit One Vanderbilt’s mirrored room, where spheres float around and visitors can interact with them. My idea was to spawn metallic spheres from above, have them land on a plane, and allow the player to walk among them. I added a FallingSphere prefab with physics, a Spawner script to make it rain spheres, and a simple WASD/mouse-look controller so I could freely explore the scene. Initially, the spheres vanished too quickly because of scale-shrinking code, so I removed that logic to let them remain visible and behave more like rain. When the plane was too small, I felt overwhelmed by spheres “drowning” the player, so I enlarged the plane for a better sense of space.
+
+I also experimented with **singleton** usage to manage and track all the spawned spheres. While testing collisions, I ran into the frustrating problem of spheres either knocking the player over or passing through the ground when set to “Is Trigger.” After multiple attempts (including placing triggers on the spheres themselves), I eventually found that adding a **trigger collider** to the player worked best—allowing the spheres to collide normally with the ground but not shove the player around. Although I never fully got the spheres to disappear upon touching the player in this prototype, I tested two different collision setups (on the sphere vs. on the player) and learned a lot about Unity’s physics layers, triggers, and the basics of singletons.
+
+Overall, I spent around **8 hours** coding and refining collisions, plus about **3 hours and 20 minutes** reading and note-taking, which I [uploaded to GitHub](https://github.com/xaynia/CART-315/blob/main/Process/Images/Notes/Week%205%20Book%20Notes.pdf). My next goals are to add more bounciness to the spheres, let the player interact with them more (like bouncing them around), and possibly implement a scoring system to further encourage engagement. Despite the challenges, the prototype now successfully spawns an endless “rain” of spheres inspired by Summit One Vanderbilt, and I have a much better grasp on how to combine singletons, colliders, and triggers for future projects.
+
+![Falling Spheres](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSpheres.png)
+
+![Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
+
+## Key Accomplishments & Notes
+
+### Spawner & Prefab Setup
+- Created a **Spawner** script that instantiates `FallingSphere` prefabs from above.  
+- Added a player character with movement and camera look, improving immersion.
+
+### Collision Challenges & Solutions
+- Initially, spheres shrank too quickly or knocked the player over.
+- Experimented with triggers on spheres (they passed through the ground).
+- **Final fix**: a trigger collider on the player that would remove spheres on contact, while they still collided with the floor.
+
+### Singleton Exploration
+- Implemented a singleton to manage the sphere list and removal.
+- Encountered collider issues unrelated to the singleton itself, but learned how to globally track and destroy spheres via a single manager.
+
+### Time Logged
+- ~8 hours on scripting, testing, and collision troubleshooting.
+- ~3 hours of reading/documentation, posted to GitHub.
+
+### Next Steps
+- Increase sphere bounciness and add more interactivity (possibly a scoring mechanic).
+- Continue refining player interactions—pushing or bouncing the spheres.
+
+
+## References
+- [Notes](https://github.com/xaynia/CART-315/blob/main/Process/Images/Notes/Week%205%20Book%20Notes.pdf)
+- [Single Sphere](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/Single-sphere.png)  
+- [Falling Spheres](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSpheres.png)  
+- [Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
 
