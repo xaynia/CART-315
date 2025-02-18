@@ -3,7 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour {
+
+    // --- Singleton ---
+    public static Spawner instance;
+
+    [Header("Falling Sphere Prefab")]
+    public GameObject fallingSpherePrefab;
+
+    // count of spawned spheres
+    public List<GameObject> spawnedSpheres = new List<GameObject>();
+
+    // New Sphere Spawn Frequency (0.1f = 10/second)
+    public float spawnInterval = 0.1f; // 
+    private float timer = 0f; // tracks time between spawns
     
+    // -------------------------------
+    // Score Variable: Tracks score (Spheres player touches & removes)
+    public int score = 0;
+    // -------------------------------
+
+    private void Awake() {
+        // Ensures only one Spawner exists
+        if (instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Update() {
+        //  spawns a ball every spawnInterval seconds
+        timer += Time.deltaTime;
+        if (timer >= spawnInterval) {
+            timer = 0f;
+            SpawnBall();
+        }
+    }
+
+    private void SpawnBall() {
+        GameObject sphere = Instantiate(fallingSpherePrefab);
+        spawnedSpheres.Add(sphere);
+
+        sphere.transform.position = new Vector3(
+            Random.Range(-5f, 5f),
+            6f, // start height
+            Random.Range(-5f, 5f)
+        );
+    }
+
+    // Remove Sphere (for when player touches it), and Log Score 
+    public void RemoveSphere(GameObject sphere) {
+        
+        // Increase the score by 1 each time a sphere is removed
+        score++;
+        // debug/log ->  check it's working
+        Debug.Log("Score: " + score);
+        
+        // Remove spheres
+        if (spawnedSpheres.Contains(sphere)) {
+            spawnedSpheres.Remove(sphere);
+        }
+        Destroy(sphere);
+    }
+}
+
+
+// Pre-Singleton:
+
 //    public GameObject fallingSpherePrefab; //spawning prefab
 //    public List<GameObject> spawnedSpheres; // track spawned spheres
 //
@@ -55,55 +122,3 @@ public class Spawner : MonoBehaviour {
 //       }
 //    }
 // }
-
-    // --- Singleton instance ---
-    public static Spawner instance;
-
-    [Header("Falling Sphere Prefab")]
-    public GameObject fallingSpherePrefab;
-
-    // count of spawned spheres
-    public List<GameObject> spawnedSpheres = new List<GameObject>();
-
-    // spawn frequency
-    public float spawnInterval = 1f;
-    private float timer = 0f;
-
-    private void Awake() {
-        // Ensures only one Spawner exists
-        if (instance == null) {
-            instance = this;
-        }
-        else {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Update() {
-        //  spawns a ball every spawnInterval seconds
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval) {
-            timer = 0f;
-            SpawnBall();
-        }
-    }
-
-    private void SpawnBall() {
-        GameObject sphere = Instantiate(fallingSpherePrefab);
-        spawnedSpheres.Add(sphere);
-
-        sphere.transform.position = new Vector3(
-            Random.Range(-5f, 5f),
-            6f, // start height
-            Random.Range(-5f, 5f)
-        );
-    }
-
-    // remove sphere
-    public void RemoveSphere(GameObject sphere) {
-        if (spawnedSpheres.Contains(sphere)) {
-            spawnedSpheres.Remove(sphere);
-        }
-        Destroy(sphere);
-    }
-}
