@@ -52,10 +52,10 @@ public class Spawner : MonoBehaviour {
         );
     }
 
-    // Remove Sphere (for when player touches it), and Log Score 
+    //  Remove Sphere (for when player touches it), and Log Score 
     public void RemoveSphere(GameObject sphere) {
         
-        // Increase the score by 1 each time a sphere is removed
+        //  Increase the score by 1 each time a sphere is removed
         score++;
         // debug/log ->  check it's working
         Debug.Log("Score: " + score);

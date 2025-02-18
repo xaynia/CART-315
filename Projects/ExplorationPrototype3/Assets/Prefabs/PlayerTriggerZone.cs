@@ -11,7 +11,7 @@ public class PlayerTriggerZone : MonoBehaviour {
                 Spawner.instance.RemoveSphere(other.gameObject); 
             }
             else {
-                // if no spawner, destroy object 
+                // if no spawner,  destroy object 
                 Destroy(other.gameObject);
             }
         }
