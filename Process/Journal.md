@@ -383,10 +383,134 @@ I also discovered _Gifski_, a Mac app that converts videos into GIFs, making my 
 > Where have they failed? Think mechanically rather than thematically.
 >  What ideas/methods/techniques do you think you could borrow for future projects?
 
-## Game: 
+ ### *Zelda Tears of The Kingdom* (TOTK)
+ 
+##  Interesting Design Decisions
 
-### What decisions have the designers made that cause the game to be interesting? 
+#### Link's Abilities:
+Link has several abilities, each earned during a shrine. These abilities allow you to manipulate objects, affecting the way you can interact with the game.
 
-### Where have they failed? (Mechanically)? 
+- **Ultrahand:** move/rotate/bind objects
+	- bind multiple objects (up to 21) together to create new objects 
+		- bind zonai devices with objects to create vehicles, flying devices
+- **Fuse:** combine objects to create new items
+	- combine weapons/shields with materials in the world
+- **Recall:** allows you to reverse an objects movement in time.
+- **Ascend:** allows link to travel through solid ceilings above him
 
-### What ideas/methods/techniques do you think you could borrow for future projects?
+These abilities open up a new realm of creative possibilities. They’re interesting because they let players choose *how* to tackle puzzles and combat, encouraging inventive solutions. 
+
+For example:
+- Reach areas you normally couldn’t by combining Recall, Ascend, and Ultrahand.
+- Use Ultrahand in combat (e.g: dropping boulders on enemies). You can move multiple items at once too.
+- Fuse allows you create a range of special weapons/shields/arrows
+	- e.g: 
+		- fuse an icicle with a weapon/shield to create a freezing weapon (i.e., freeze enemies)
+		- freeze monster parts (shows fuse attack power) with weapon to create strong weapon 
+		- fuse inventory item to arrow when shooting arrow
+			- e.g:
+				- bomb flower + arrow = bomb arrow
+				- fire fruit + arrow = flaming arrow
+
+### Physics
+What makes these abilities so special is how they interact and change the physics of objects. This interplay is central to the entire game (exploring, combat puzzles, etc). For instance, the game’s physics engine treats every fused item or Zonai device as a physical object with its own weight, collision, and momentum—so when you bind them together, the physics engine tries to simulate them realistically. This enables players to experiment with a sense that anything could work if they find the right combination or angle, which not only fuels creativity but also solutions to challenges.
+
+## Design Fails
+### Overly Exploitable Ability Physics: 
+The game’s physics engine and abilities create endless possibilities. Vehicles and flying devices made from Zonai devices are intended to be limited by Zonai battery. However, because you can combine almost anything, it’s common to see vehicles **modified** in ways the developers never intended.
+
+**Examples:**
+
+**e.g: No Battery Infinite Flight Aircraft**  
+I found (one of many examples on [Youtube](https://www.youtube.com/watch?v=7uzDn_20oiE&t=10s)) this build which does this to create this exploit:
+>- **Fuse** a Flux Construct I block part to your shield/weapon (you don't even need to defeat it, you can just attack it, and fuse his part)
+>- **Fuse** a propeller (from *Turbine Power* Shrine) to your shield/weapon. 
+>- Then go to Peilison in Tarrey Town, an NPC you can pay to **unfuse** them. 
+>- Then you can use **ultrahand** to bind the parts together to create the build 
+>- Also needed: speark-like weapon (e.g. pitchfork), and a Zonai steering stick (uses no Zonai power)
+
+This exploit bypasses the limit (Zonai power, and intended flying devices) created by the game entirely. And by fusing and unfusing items, players can gain access to building blocks they weren't intended to use to build. Since it completely sidesteps the energy-cell system (collecting batteries, managing flight time), core progression elements become moot.
+
+**e.g:  Infinite Battery Exploit with Cooking Pots**
+>- When flying with a hot air balloon, you normally lose altitude if the battery depletes. By opening your inventory and using a single-use cooking pot (Zonai item), you effectively reset or recharge your battery, preventing the balloon from dropping.
+
+The original design goal—requiring players to plan battery usage—is undermined when you can simply reset your Zonai energy on demand.
+
+**e.g: Preventing Gliders from Despawning**
+>-   If you attach extra fans backward on a glider and mount a steering stick, the glider won’t nosedive or despawn once battery runs out.
+>-   It essentially remains functional, letting you fly indefinitely without burning additional resources.
+
+Glider despawning was intended to limit flight duration. This exploit overrides the limitation, which again, makes exploration become trivial.
+
+**e.g: Infinate Heigh Glitch**
+>- If you place a stabilizer onto a U-shaped block (from the depths), stand in it, trigger a memory cutscene, and exit. 
+>- This can catapult Link high into the sky, effectively creating infinite height gain
+
+This glitch bypasses standard travel mechanics (e.g.: rockets, hot air balloons) which again have limitations. This matters mechanically because it allows players to bypass environmental challenges and achievements (like climbing mountains, or reaching floating islands, etc).
+
+### Unbalanced Arrow Supply/Demand
+Arrows are in high demand and can be frustratingly scarce or expensive, prompting repetitive rupee farming methods, or infinate arrow glitches/exploits. 
+
+Arrows are in high demand but can be scarce or expensive, encouraging repetitive rupee farming (e.g., gem farming from Stone Talus spawns) or reliance on infinite-arrow glitches/exploits. The pricing and availability of arrows could perhaps be a design oversight. While the developers likely intended some scarcity, it can feel overly punishing or tedious, driving players to repetitive grinds just to get basic resources.
+
+### Save/Load Abuse: 
+Players can save right before a difficult fight and reload repeatedly if they fail, negating many of the intended risks. This design choice removes tension from high stake battles because it removes risk (penalty and losses), and inadvertently reduces difficulty. Some players appreciate it; others see it as diminishing challenge.
+
+## Borrowable Ideas/Methods/Techniques for Future Projects
+
+**The creative abilities and physics truly form a double-edged sword.** On one hand, Link’s expansive toolkit is a huge part of what makes the game so appealing, because there are practically endless possibilities to tackle any situation.
+
+On the other hand, with so much creative freedom, players naturally discover ways to bypass design intent—like building flying vehicles that ignore intended flight-time limits. I can see why TOTK puts restrictions on flying devices, given that real-life aircraft have resource constraints. Meanwhile, other games (like GTA) don’t bother with flight limits (planes needing no fuel), providing a whole different play experience without those concerns.
+
+Still, I’ve got to give props to the players and TOTK for crafting such a robust physics simulation, where everyone can invent and test imaginative creations in ways that even the developers might not have foreseen.
+
+### Player Abilities:
+What I would takeaway from TOTK, is the idea of the abilities being something people could only dream of having. I would opt for some different abilities, thinking about guardrails to prevent exploits (e.g: balance them with resource costs or situational limitations)
+- Elemental manipulation (player can manipulate fire, air, water, earth, light)
+- Teleportation (similar to map teleportation in TOTK)
+- Necromancy
+- Ability for *character* to fly (defy physics)
+
+### Game Physics Ideas:
+- Element interaction
+	- e.g: 
+		- Ice and fire (and magma when you combine them)
+		- Fire melts ice
+		- Water can heat/freeze 
+		- Food can heat/freeze
+
+### Cooking Mechanic:
+I love the cooking mechanic in TOTK. I love how it enables you to explore, gather items, and experiment. The cutscene is wonderful too, and the experience feels very cozy. I do wish, however, there was *more* recipes creations. 
+
+**Some of my favourite aspects of TOTK cooking:**
+
+There are so many **different ways to cook**:
+- **Meal:** food ingredients cooked in a pot 
+- **Elixir:** critter and monster part cooked in a pot
+- **Roast:** food cooked by fire (or extreme heat)
+- **Frozen:** food laid on freezing ground
+- **Boiled:** egg put in hot spring
+- **Fairy Tonic:** fairy + recipe
+- **Dubious Food:** minimally restores HP (recipe fail)
+
+And different cooking **effects**:
+- **Meal:** restores hearts (HP), special effects
+- **Elixir:** restores 2x hearts (HP), special effects
+- **Roast:** restores less hearts (HP), but stacks in inventory
+- **Frozen:** provides heat resistance
+	- can fuse to shield to shield surf
+- **Boiled:** egg put in hot spring
+- **Fairy Tonic:** restores 2x hearts (HP), prevents dubious recipe
+
+And different **ingredient effects** to cook with:
+- **Hearty**
+- **Spicy**
+- **Chill**
+- **Mighty**: increases attack
+- Normal
+
+### Object Special Effects:
+An overarching theme of cooking and fuse, is **object properties which have effects**. I like the idea of adding special properties to objects in the game (herbs, fruits, gems, etc) that be used (e.g. cooking, to make weapons more powerful) to encourage players to combine items in strategic ways.
+
+## Closing Thoughts
+In the end, what I love most about _Tears of the Kingdom_ is its ability to **spark creativity** through abilities and physics—letting you **experiment** and solve challenges in countless ways. This design is definitely a double-edged sword: the same openness that makes the game so fascinating can also lead to players bypassing large chunks of content. Still, I’m blown away by just how expansive and polished the physics system is, even if replicating it on that scale would be tough for most projects. Instead, I’d aim to borrow some of my favorite ideas, like **player abilities, dynamic cooking, objects with special properties, and elemental interactions**—and adapt the abilities with a bit more caution.
