@@ -272,12 +272,19 @@ Currently I'm trying to find the right balance between learning and practicing i
 - [Github Images and Notes Log](https://github.com/xaynia/CART-315/tree/main/Process/Images)  
 
 
-# Week 6: Feb 20
-**Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
 
-test
-.
+**# Week 6: Feb 20**
+
+  
+
+**## Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
+
+  
+
+### Debugged Singleton Logic: Spheres Now Disappear on Player Contact
+
+Picking up where I left off last time, I began debugging why the spheres never disappeared last time.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ2MzQ0Mjc3XX0=
+eyJoaXN0b3J5IjpbLTIwNDExNDQ3MDYsOTQ2MzQ0Mjc3XX0=
 -->
