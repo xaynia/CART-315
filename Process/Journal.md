@@ -276,7 +276,9 @@ Currently I'm trying to find the right balance between learning and practicing i
 **Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
 
 test
+.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2OTM4MzIwMSwxODczODM4MjkzXX0=
+eyJoaXN0b3J5IjpbOTQ2MzQ0Mjc3LC0yNjkzODMyMDEsMTg3Mz
+gzODI5M119
 -->
