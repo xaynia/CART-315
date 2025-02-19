@@ -278,7 +278,3 @@ Currently I'm trying to find the right balance between learning and practicing i
 test
 .
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ2MzQ0Mjc3LC0yNjkzODMyMDEsMTg3Mz
-gzODI5M119
--->
