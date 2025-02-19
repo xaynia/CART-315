@@ -237,7 +237,6 @@ This felt like my first time using Unity without "training wheels" (i.e.: practi
 
 I met my goal of starting a prototype this week! I am very happy about that. Tracking my time in Toggltrack has been very helpful for me to figure out how to have a better week the next week, as well as manage my time. I feel like I am getting better at navigating Github, and Rider, and Unity too – even if it feels overwhelming at times (mainly because of how much there is to know in Unity before you even use it).
 
-
 Currently I'm trying to find the right balance between learning and practicing in Unity. I plan to keep sprinkling in more guided Unity Learn tutorials (scripting and smaller game tutorials, currently), because they help me feel more comfortable using Unity. And I also plan to start start working on my weekly prototypes earlier in the week too. I think learning and practicing in Unity is exactly what I need to be doing before I can come up with a concrete idea for my final project – but I do plan on starting to checkout more Youtube videos to get ideas flowing too. 
 
 
@@ -271,13 +270,123 @@ Currently I'm trying to find the right balance between learning and practicing i
 - [Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
 - [Github Images and Notes Log](https://github.com/xaynia/CART-315/tree/main/Process/Images)  
 
+# Week 6:  Feb 20 | *Exploration Prototype 4 (Continuation)*
+
+> ## What Changed This Week
+>- Fixed the **trigger collision issue** (the spheres not disappearing on player contact), by adding the correct tag `FallingSphere` (to sphere prefab being spawned) that `PlayerTriggerZone`  script was looking for.
+>- Added a `score` variable to the Spawner (singleton): increases score when player contacts spheres
+>- Created a TextMeshPro UI display for the score
 
 
-# Week 6: Feb 20 | *Exploration Prototype 4* 
 ### Debugged Singleton Logic: Spheres Now Disappear on Player Contact
+Picking up from last time, I investigated why the spawned spheres wouldn’t disappear upon player contact. I discovered the issue: the sphere prefabs which were being spawned were missing a necessary tag that the `PlayerTriggerZone` script was checking for (missing tag: `FallingSphere`).
 
-Picking up where I left off last time, I began debugging why the spheres never disappeared last time.
+```csharp
+public class PlayerTriggerZone : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FallingSphere"))
+        {
+            if (Spawner.instance != null)
+            {
+                Spawner.instance.RemoveSphere(other.gameObject);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
+        }
+    }
+}
+```
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjcxMDI5NjgsOTQ2MzQ0Mjc3XX0=
--->
+Once I added the correct tag, `PlayerTriggerZone` script checks for the sphere’s tag, then it calls `Spawner.instance.RemoveSphere` (from `Spawner` Singleton script) to remove and destroy the sphere whenever the player collides with it.
+![Singleton Logic: Player Contact Makes Spawned Sphere Disappear](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/SingletonLogicDebug-SpheresDissapearonPlayerContact.gif)
+
+### Added Score in Singleton Spawner and Score UI (TextMeshPro)
+Using the same newly working logic, I introduced a `score` variable to the `Spawner` singleton script. Whenever `RemoveSphere` is called (i.e., when a sphere is collected by the player), the score increases by one.
+
+To display the score, I created a UI Canvas with a child TextMeshPro UI object. I then added a `ScoreDisplay` script
+```csharp 
+using System.Collections;  
+using System.Collections.Generic;  
+using UnityEngine;  
+using TMPro;  
+  
+// Score Display Script
+public class ScoreDisplay : MonoBehaviour {  
+  public TextMeshProUGUI scoreText;  
+  
+  void Update() {  
+  //  Show the current score (Spheres player collides with [from the Spawner])  
+  scoreText.text = "Score: " + Spawner.instance.score;  
+ }}
+```
+to the child, and in the inspector dragged the TextMeshPro component onto the script's scoreText field. This script references `Spawner.instance.score` to show the current score on the screen.
+
+![Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/ScoreUI.gif)
+I adjusted child Y position settings, max/min size, alignment, and position to be small in the top left corner. I set parent render mode to overlay too.
+![Resized Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/SmallerScoreUI.gif)
+
+## Challenges (Troubleshooting)
+
+### Adding TextMeshPro UI
+
+I spent about an hour fixing the hot-pink text issue in TextMeshPro. This happened because I added the UI code to the Score GameObject in play mode, and missed a notification from Unity to download the TMP Essential Resources. so once I realized I needed this, first, I manually imported them TMP resources in Unity.
+![Debugging UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/Debugging.png)
+ Then, I changed the font asset and material preset for `TMP_SubMeshUI` components to **LiberationSans SDF** and **Unity Atlas Material**, which solved the problem
+![Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/ScoreUI.gif)
+
+
+ ### Rider: Push Error
+After I finally got everything working and tested the UI, I pushed everything in Rider (the changes and a few hundred of the new TextMeshPro  files), Rider sent a notification to authorize Github again in the browser which I accidentally closed, and then I got the error.
+ 
+	 error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400 send-pack: unexpected disconnect while reading sideband packet.
+
+ I spent another hour *attempting* to troubleshoot the error in Rider, and Github Desktop (I tried reauthorizing Github, undoing the changes, trying to push them (because nothing was actually pushed), etc).
+
+After coming back to it the next day and [looking up the issue online](https://stackoverflow.com/questions/77856025/git-error-rpc-failed-http-400-curl-22-the-requested-url-returned-error-400-se), I fixed by increasing the buffer size with:
+
+	git config http.postBuffer 524288000
+
+Then I re-attempted the push. I also added a `.gitignore` to exclude some TextMeshPro example resources.
+
+
+## Reflection
+Debugging the UI took longer than expected, mainly because I was juggling multiple scripts and couldn’t pinpoint the problem. It turned out to be a small oversight—missing the proper tag. Even so, it took me about an hour to trace that down.
+
+Troubleshooting the Rider push error also took a long time. In hindsight I spent alot of time blindly trying to fix the problem and I should have looked it up sooner. I'm still not entirely sure if the TextMeshPro files caused the error, or if closing Github authorization popup tab during the push caused the error, but I assume it's the former.
+
+Despite the challenge, I feel more organized this week. I started earlier, kept track of my time, and wrote my journal as I went along. This consistent workflow makes me feel like I’m finally getting into a programmer’s mindset.
+
+I also discovered _Gifski_, a Mac app that converts videos into GIFs, making my documentation more visual. Additionally, I’ve been using _StackEdit_ for Markdown writing, which helps me preview changes in real time (though it lacks custom commit messages) – It's really helping me learn markdown well!
+
+### Change Test Goals:
+
+### What I learned:
+
+### Success:
+
+### How I would keep exploring this idea:
+
+## Resources
+- [Link to Project Folder (Continuation of Last Week’s Prototype 3)](https://github.com/xaynia/CART-315/tree/main/Projects/ExplorationPrototype3) 
+- [Week 6 Image Log](https://github.com/xaynia/CART-315/tree/main/Process/Images/W6_ExplorationPrototype4)
+
+
+# Week 6: Extra Credit Game Analysis: 
+
+> **Game Analysis:**
+> Find a game that you know well or are intrigued by. 
+> What decisions have the designers made that cause the game to be interesting? 
+> Where have they failed? Think mechanically rather than thematically.
+>  What ideas/methods/techniques do you think you could borrow for future projects?
+
+## Game: 
+
+### What decisions have the designers made that cause the game to be interesting? 
+
+### Where have they failed? (Mechanically)? 
+
+### What ideas/methods/techniques do you think you could borrow for future projects?
