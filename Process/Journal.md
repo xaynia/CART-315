@@ -273,18 +273,11 @@ Currently I'm trying to find the right balance between learning and practicing i
 
 
 
-**# Week 6: Feb 20**
-
-  
-
-**## Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
-
-  
-
+# Week 6: Feb 20 | *Exploration Prototype 4* 
 ### Debugged Singleton Logic: Spheres Now Disappear on Player Contact
 
 Picking up where I left off last time, I began debugging why the spheres never disappeared last time.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDExNDQ3MDYsOTQ2MzQ0Mjc3XX0=
+eyJoaXN0b3J5IjpbLTEzMjcxMDI5NjgsOTQ2MzQ0Mjc3XX0=
 -->
