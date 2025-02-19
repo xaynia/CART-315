@@ -275,6 +275,8 @@ Currently I'm trying to find the right balance between learning and practicing i
 # Week 6: Feb 20
 **Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
 
+test
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MzgzODI5M119
+eyJoaXN0b3J5IjpbLTI2OTM4MzIwMSwxODczODM4MjkzXX0=
 -->
