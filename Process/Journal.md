@@ -1,3 +1,4 @@
+
 # Process Journal
 
 > **Note for self:**
@@ -8,6 +9,10 @@
 
 # Week 1-2: Tiny Game
 
+
+<details>
+<summary> Bitsy Reflection (Click to Expand)</summary>
+	
    After reflecting, and playing various inspiring Bitsy games, I have narrowed my focus to a Bitsy game. I like the dialogue, and simplistic art style. 
 
    The scene is at the shore. A raven sits there. An orca resides in the water. The characters journey is about finding guidance and comfort in nature at the shore, as they drift on their way to finding their purpose. 
@@ -16,7 +21,7 @@
 
    Characters: 
    - Orca: Wise, mysterious. Knows the ancient, deep, mysterious wisdom of the ocean. Deep, like the ocean. The orca ocassionaly and majestically surfaces. Truly a sight to see when he surfaces, he spouts grand wisdom, before he returns to his pod.
-   - Raven: the Trickster: May **act** as a guide. Sharp and confrontational in nature, in contrast with the orca. Vapid, like the air. The Raven croaks and caws, and flaps it's wings around.
+   - Raven: the Trickster: May act as a guide. Sharp and confrontational in nature, in contrast with the orca. Vapid, like the air. The Raven croaks and caws, and flaps it's wings around.
 
    Items: 
    - Driftwood: May reveal objects, perhaps carvings, for the player to see. Maybe even symbolic of people.
@@ -24,8 +29,20 @@
    - Shell: Triggers a childhood memory, about simpler times.
    - Fishing net: 
 
+**Notes about Testing Bitsy:**
+- I really liked the dialogue and simplicity with Bitsy. I spent a decent amount of time trying to figure out how to use it, seeing if I could add more than 3 colors into the color palette with the code. After I decided 3 colors wouldn't work (and a youtuber who confirmed I should infact stop) for my idea I decided to try Pico-8. I felt like I had a solid plan with my original idea. It was supposed to be a relatively fast game but have impactful dialogue about changes in life. From the games I tested in Bitsy, my favourite part about them is how impactful they can be, from this perspective. 
+- Favourite Bitsy Games I tested:
+  
+https://zenzoa.itch.io/wandering-home
+
+https://le-onionboi.itch.io/spoons
+
+https://lolabug.itch.io/no-longer-human
+
+</details>
 
 **Update: Changed Game: Ghost Tale**
+
 After testing Bitsy, I felt it was too primitive (because of the 3 color limitation) and decided to switch over to pico-8—and I’m so glad I did! I started by designing a ghost and built a platformer around it. The learning curve was steep, but once I got the hang of the code, it became a blast to create. I ended up making a game about a ghost whose soul is restless, roaming around an area filled with graves. I added three trick graves with spike traps, detours, and tricky-to-reach platforms. At the very edge of the map is the ghost’s real grave, which marks the end of the game. Testing it was definitely the most fun part!
 
 The biggest pit of the entire process happened when I used the selector tool to erase tiles and accidentally pressed “delete” with nothing selected. A huge chunk of tiles vanished in an instant. Note to self: always save immediately when I’m happy with my progress!
@@ -47,36 +64,67 @@ I really enjoy platformer games. Some of my favourites are Super Mario Bros Wond
 **Future Improvements:**
 - Adding music to the game would be great. Adding characters such as NPC monsters which move around and damage you would be really fun too. Adding objects like coins would also be a really great addition. It would have been fun to add more details and features, and while I think there is always room for improvements, I am satisfied with baseline game. 
 
-**Notes about Testing Bitsy:**
-- I really liked the dialogue and simplicity with Bitsy. I spent a decent amount of time trying to figure out how to use it, seeing if I could add more than 3 colors into the color palette with the code. After I decided 3 colors wouldn't work (and a youtuber who confirmed I should infact stop) for my idea I decided to try Pico-8. I felt like I had a solid plan with my original idea. It was supposed to be a relatively fast game but have impactful dialogue about changes in life. From the games I tested in Bitsy, my favourite part about them is how impactful they can be, from this perspective. 
-- Favourite Bitsy Games I tested:
-  
-https://zenzoa.itch.io/wandering-home
-
-https://le-onionboi.itch.io/spoons
-
-https://lolabug.itch.io/no-longer-human
-
 **Notes about Ghost Tale & Pico-8:**
 - I felt like I needed a plan intially, and even though I went into Pico-8 with no plan, the funnest part about creating Ghost Tale was actually that I had absolutely no plan, and went into a state of flow, rather. I decided to watch a youtube video of someone who learned Pico-8 in a day and made a game, and mentioned NerdyTeachers https://nerdyteachers.com/Explain/Platformer/ platformer series which helped me. After brainstorming a few ideas about a character, I chose a cute ghost. As for the movement, the ghost would just bob. From there, I had alot of fun designing platforms with an aesthetic which would match the ghost theme. From there I had alot of fun figuring out how Pico-8 works, laying the tiles I created, and testing movement and interaction, etc. I started laying tiles, and put a pit at the start of the game. I realized quickly that when the ghost fell down the pit, the camera did not follow. This required adjusting the update functions player.x variable. Once this was fixed I had so much fun designing the world! I realized I would need a way to end the game however, so I thought a treasure chest could work intially. After thinking about it some more, I thought finding the ghosts gravestone would make a good plot, so I went with that idea. From here I started testing flags, and realized I would need to add a message when you interact with them, which I added in the _Draw function. Once I got this working I thought adding false gravestones would be fun too, so I designed the false gravestone with a different flag and placed 3 of those in the world too. After this I would keep implementing changes, running the game and testing it, and repeat, until I was happy with the finished product. Overall I am happy with the game, and was really happy I ended up using Pico-8, especially since using Lua ended up having some overlap with Javascript, so it helped me with getting some terms and concepts to long term memory.
-- Camera e.g: 	
-	cam_x=player.x-64+(player.w/2)
-	if cam_x<map_start then
-				cam_x=map_start
-	end
-	if cam_x>map_end-128 then
-				cam_x=map_end-128
-	end
-	camera(cam_x,player.y-64)
-end
-- Gravestone Win condition Flag e.g:
-  function _draw()
-	cls()
-	map(0,0)
-	spr(player.sp,player.x,player.y,1,1,player.flp) 
+
+<details>
+<summary> Examples</summary>
+
+- e.g: Camera 
 	
-	print('your soul wanders restlessly \n you must find your grave',124,54)
-	print('press x to jump',30,82)
+		cam_x=player.x-64+(player.w/2)
+		if cam_x<map_start then
+					cam_x=map_start
+		end
+		if cam_x>map_end-128 then
+					cam_x=map_end-128
+		end
+		camera(cam_x,player.y-64)
+		end
+	
+- e.g: Gravestone Win Condition Flag 
+
+		function _draw()
+			cls()
+			map(0,0)
+			spr(player.sp,player.x,player.y,1,1,player.flp) 
+			
+			print('your soul wanders restlessly \n you must find your grave',124,54)
+			print('press x to jump',30,82)
+	
+</details>
+
+## Ghost Tale
+
+[Play my game on itch.io](https://xaynia.itch.io/ghost-tale)
+
+**Spawn** 
+
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/Spawn.gif?raw=true" alt="Spawn" width="60%" />
+
+**Platforms** 
+
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/Platforms.gif?raw=true" alt="Platforms" width="60%" />
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/Platforms2.gif?raw=true" alt="Platforms 2" width="60%" />
+
+**Respawn on Death** 
+
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/Death.gif?raw=true" alt="Death Animation" width="60%" />
+
+<details>
+<summary> More gifs </summary>
+
+**False Grave** 
+
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/False-grave.gif?raw=true" alt="False Grave" width="60%" /> 
+
+**Win** 
+
+<img src="https://github.com/xaynia/CART-315/blob/main/Process/Images/GhostTale-TinyGame/Win.gif?raw=true" alt="Win" width="60%" />`
+
+[More: Github Image Folder](https://github.com/xaynia/CART-315/tree/main/Process/Images/GhostTale-TinyGame)
+
+</details>
 
 # Week 3
 >Note: I emailed you about this week.
@@ -216,11 +264,14 @@ Currently I'm trying to find the right balance between learning and practicing i
 - Increase sphere bounciness and add more interactivity (possibly a scoring mechanic).
 - Continue refining player interactions—pushing or bouncing the spheres.
 
-
 ## References
 - [Notes](https://github.com/xaynia/CART-315/blob/main/Process/Images/Notes/Week%205%20Book%20Notes.pdf)
 - [Single Sphere](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/Single-sphere.png)  
 - [Falling Spheres](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSpheres.png)  
 - [Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
 - [Github Images and Notes Log](https://github.com/xaynia/CART-315/tree/main/Process/Images)  
+
+
+# Week 6: Feb 20
+**Exploration Prototype 4 – Design Journal (Continuation of Prototype 3)**
 
