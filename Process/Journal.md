@@ -352,6 +352,11 @@ After coming back to it the next day and [looking up the issue online](https://s
 
 Then I re-attempted the push. I also added a `.gitignore` to exclude some TextMeshPro example resources.
 
+### Perfectionism and/or Time Blindness?
+I logged **22 hours this week** in TogglTrack (Monday–Wednesday). Yet despite putting in a lot of time, I feel like I haven’t accomplished as much as I’d hoped. I suspect perfectionism and/or maybe time blindness are making tasks take longer. I’m trying to balance my desire to produce high-quality work with the reality that programming can be time-consuming—and more so when I’m still in the early stages of learning, while learning two programming languages at once.
+
+### Balancing Unity Progress and Documentation
+I also find I’m spending a considerable chunk of my time creating journal entries to document what I’m doing. This may be due to perfectionism, but I'm feeling spread thin.  I also need to focus on making real progress in Unity, researching game ideas, and practicing new scripting concepts. I’m still trying to find a happy medium between documenting everything and keeping a good development pace. 
 
 ## Reflection
 Debugging the UI took longer than expected, mainly because I was juggling multiple scripts and couldn’t pinpoint the problem. It turned out to be a small oversight—missing the proper tag. Even so, it took me about an hour to trace that down.
@@ -360,20 +365,31 @@ Troubleshooting the Rider push error also took a long time. In hindsight I spent
 
 Despite the challenge, I feel more organized this week. I started earlier, kept track of my time, and wrote my journal as I went along. This consistent workflow makes me feel like I’m finally getting into a programmer’s mindset.
 
-I also discovered _Gifski_, a Mac app that converts videos into GIFs, making my documentation more visual. Additionally, I’ve been using _StackEdit_ for Markdown writing, which helps me preview changes in real time (though it lacks custom commit messages) – It's really helping me learn markdown well!
+I also discovered _Gifski_, a Mac app that converts videos into GIFs, making my documentation more visual. Additionally, I’ve been using _StackEdit_ for Markdown writing, which helps me preview changes in real time (though it lacks custom commit messages) – It's really helping me learn markdown well.
 
-### Change Test Goals:
+### Goals:
+My main goal since the last prototype was to finish what I started (to fix the trigger collision logic), which I accomplished. Building on this, I also added a score system with UI to track how many spheres the player collects.
 
 ### What I learned:
+1.  How to add TextMeshPro UI to track score.
+2.  To always check Rider for warning notifications (that’s how I discovered a missing `<tag>`).
+3.  Be careful when pushing big file libraries (they may cause Github can cause errors—.gitignore is essential.)
 
-### Success:
+### Accomplishments: Success?:
+On one hand, I’m happy to have achieved my goal of fixing the trigger collision and adding a score system—those were my main technical objectives. On the other hand, I still feel like I should be doing more in Unity itself. So, while the outcome is good, I do feel overwhelmed and wish I had more tangible progress in Unity. Given that programming is new to me (and I'm learning two languages concurrently). However, I keep reminding myself learning learning to code takes time.
 
-### How I would keep exploring this idea:
+### Future Exploration:
+Now that I have the score system and sphere spawner working, I think it would be fun to turn the prototype into a game of soccer or baseball to keep exploring. Maybe with other NPC characters too.
+
+Another idea would be build a skyscraper and mirrored/glass room like the original idea.
+
+I want to begin experimenting with multiple scenes, and start  building an environment so I can start adding special objects (like I mentioned in bonus entry) too. And then also and start exploring player customization or abilities.
+
+Eventually, I’d love to implement a magical mechanic that maybe ties into the abilities. Even though it feels far off, I’m excited by the idea of adding magic powers, spells, or elemental effects to the gameplay (I'm inspired by Eldin Ring too).
 
 ## Resources
 - [Link to Project Folder (Continuation of Last Week’s Prototype 3)](https://github.com/xaynia/CART-315/tree/main/Projects/ExplorationPrototype3) 
 - [Week 6 Image Log](https://github.com/xaynia/CART-315/tree/main/Process/Images/W6_ExplorationPrototype4)
-
 
 # Week 6: Extra Credit Game Analysis: 
 
