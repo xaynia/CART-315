@@ -530,3 +530,33 @@ An overarching theme of cooking and fuse, is **object properties which have effe
 
 ## Closing Thoughts
 In the end, what I love most about _Tears of the Kingdom_ is its ability to **spark creativity** through abilities and physics—letting you **experiment** and solve challenges in countless ways. This design is definitely a double-edged sword: the same openness that makes the game so fascinating can also lead to players bypassing large chunks of content. Still, I’m blown away by just how expansive and polished the physics system is, even if replicating it on that scale would be tough for most projects. Instead, I’d aim to borrow some of my favorite ideas, like **player abilities, dynamic cooking, objects with special properties, and elemental interactions**—and adapt the abilities with a bit more caution.
+
+# Week 7: Iterative Prototype 1
+> Journal about the first stage of your prototyping process. What was your idea? What specific questions where you trying to answer (goals)? Was it a look/feel, role, implementation prototype?What fidelity levels are you dealing with? What did you learn and what are the next steps?
+
+## Idea
+I am building upon my last iteration with the spheres. Currently each of the spheres spawns the same size and color. I want the spheres to spawn in different sizes and change size too. The idea is akin to the "magical" Quidditch balls in Harry Potter. Instead of all spheres spawning at the same scale and giving the same points, I want them to grow or shrink, and potentially have different behaviours tied to size.
+
+### Design Values
+The big picture is to implement a magical theme. There are various ways I could do this, and want to begin my testing quidditch ball like variation.
+
+### Three favourite ideas
+1. Morphing
+3.  Illusion copies: Occasionally create ghost copies that fade away or pass through walls—only one is “real” and collectible
+4. Elemental effects: adding fire, ice trail etc
+Other ideas: glowing, magical cloud, power ups (buff, trick, time warp)
+
+## Goals
+The goal is to make the spheres more dynamic and interesting.
+**Add movement to the spheres:** Make the spheres change size over time 
+**Add variation to the spheres**
+
+###  What specific questions were you trying to answer?
+- How can I easily spawn spheres with different sizes in Unity?
+- Whats the best way to animate their size changes (grow and shrink) during gameplay
+- Does varying sphere size affect scoring and player interaction
+
+### Was it a look/feel, role, or implementation prototype?
+It is a **look/feel prototype** because i'm experimenting with different sphere sizes and potentially new visuals. Part of the prototype involves tweaking the aesthetics (e.g., how large/small spheres look and feel)
+
+It is also an **implementation prototype** as I am implementing the script for a growth/shrink mechanic, and maybe collision handling. I may also have to adjust the scoring logic.
