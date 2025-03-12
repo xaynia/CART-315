@@ -535,28 +535,87 @@ In the end, what I love most about _Tears of the Kingdom_ is its ability to **sp
 > Journal about the first stage of your prototyping process. What was your idea? What specific questions where you trying to answer (goals)? Was it a look/feel, role, implementation prototype?What fidelity levels are you dealing with? What did you learn and what are the next steps?
 
 ## Idea
-I am building upon my last iteration with the spheres. Currently each of the spheres spawns the same size and color. I want the spheres to spawn in different sizes and change size too. The idea is akin to the "magical" Quidditch balls in Harry Potter. Instead of all spheres spawning at the same scale and giving the same points, I want them to grow or shrink, and potentially have different behaviours tied to size.
+Our primary concept is a **defend-the-castle** style game where the player must protect a magical crystal (or orb, etc) from waves of incoming monsters. The core mechanics revolve around spellcasting: the player uses projectiles or spells to repel enemies that spawn at increasing rates. This forms the foundation of our game, and we plan to layer additional features—like varying environments, elemental power-ups, and possibly an inventory system—after we establish the basic combat loop.
 
 ### Design Values
-The big picture is to implement a magical theme. There are various ways I could do this, and want to begin my testing quidditch ball like variation.
+1.  **Immersion in a Magical World**: We want players to feel truly embedded in a fantasy realm, experiencing the thrill of spellcasting and defending a sacred artifact.
+2.  **Progression & Challenge**: As waves increase in difficulty, the sense of progression is key, offering a rewarding loop for players who successfully upgrade or learn new spells.
+3.  **Scalability**: Start with a simple but solid core (castle defense), then scale up with new elements (inventory, environment interactions, elemental powers) if time permits.
+4.  **Player Agency**: The player should have multiple spellcasting choices and strategic options (e.g., positioning, resource management) to keep the gameplay engaging and varied.
 
 ### Three favourite ideas
-1. Morphing
-3.  Illusion copies: Occasionally create ghost copies that fade away or pass through walls—only one is “real” and collectible
-4. Elemental effects: adding fire, ice trail etc
-Other ideas: glowing, magical cloud, power ups (buff, trick, time warp)
+1.   **Mini Open-World with Combat & Magic**  
+    Inspired by _Zelda: TOTK_ and _Elden Ring_, a small but explorable environment where players can gather resources for spells, interact with NPCs, and fight roaming monsters.
+    
+2.   **Horde Defense with Elemental Interactions**  
+    Waves of enemies approach while the player uses elemental spells (fire, ice, lightning, etc.) that can combine for special effects (e.g., oil + fire = increased burn damage).
+    
+3.   **Puzzle-Integrated Spellcasting**  
+    A puzzle layer in which spell combinations unlock doors or reveal hidden paths—possibly using illusions or invisibility to navigate stealth segments.
+    
+We ultimately chose to focus on the **horde defense** aspect first, as it offers a clear core challenge and is easier to implement in our initial prototype.
 
 ## Goals
-The goal is to make the spheres more dynamic and interesting.
-**Add movement to the spheres:** Make the spheres change size over time 
-**Add variation to the spheres**
 
-###  What specific questions were you trying to answer?
-- How can I easily spawn spheres with different sizes in Unity?
-- Whats the best way to animate their size changes (grow and shrink) during gameplay
-- Does varying sphere size affect scoring and player interaction
+First, we aim to get the barebones foundation of our defend-the-castle game working. These steps will let us test the core loop: the player casts spells at waves of monsters trying to destroy the orb.
+### Weekly Goals
+- [ ]    **Create a Monster GameObject** (basic model/placeholder)
+- [ ] **Create a Crystal/Orb GameObject** (the target to defend)
+- [ ] **Implement Basic Projectile/Spellcasting**
+	- Simple projectile script
+	- Collision detection with monsters (could potentially use my previous collision detection script)
+- [ ] **Set Up a Simple Wave Spawner** (enemy waves) (could use my spawner script)
+	- Very basic AI to move towards the orb
+- [ ] **Implement Health & Damage**
+	- Monster health/dying on 0 HP
+	- Orb health (game over if destroyed)
+	- Player health
+- [ ]    **Basic UI feedback** (player health, crystal health, score).
+
+Our immediate goal is to validate the core gameplay loop—does defending an object with spell-based combat feel satisfying, challenging, and fun? By testing early, we can confirm whether our combat mechanics are engaging enough to expand upon.
+
+##  Questions We’re Trying to Answer
+1.  Can we implement smooth spellcasting mechanics with a basic projectile system in Unity?
+2.  Is the pacing of enemy waves balanced for a “defend-the-orb” style challenge to maintain player engagement?
+3.  How feasible is it to add additional features (inventory, elemental combos, etc.) later without breaking the core loop? 
 
 ### Was it a look/feel, role, or implementation prototype?
-It is a **look/feel prototype** because i'm experimenting with different sphere sizes and potentially new visuals. Part of the prototype involves tweaking the aesthetics (e.g., how large/small spheres look and feel)
+This prototype primarily focuses on **implementation**. We are building scripts for monster AI, projectile casting, and object defense to see if our gameplay mechanics work under real conditions. While we do care about some basic aesthetic consistency (a fantasy look/feel), the priority is functional testing over polished visuals.
 
-It is also an **implementation prototype** as I am implementing the script for a growth/shrink mechanic, and maybe collision handling. I may also have to adjust the scoring logic.
+### Fidelity Levels
+**Low- to Mid-Fidelity**: We’re using placeholder 3D assets or basic shapes, as well as simple UI elements for scoring and health. This allows us to iterate on gameplay without getting bogged down by final art or detailed environment design.
+
+## Next Steps
+- [ ] **Integrate Scoring** using existing scoring system
+- [ ] **Implement Basic Spellcasting**:
+    -   Use a projectile system in Unity.
+    -   Ensure it feels responsive (speed, damage, cooldown).
+- [ ] **Create Enemy Waves**:
+    -   Set up a spawner that gradually increases wave difficulty.
+    -   Basic AI: move towards the crystal/orb and attempt to damage it.
+    - Adjust speed, spawn rate, difficulty)
+- [ ] **Protect the Crystal**:
+    -   Implement a health system for the orb (and possibly the player).
+    -   Show basic feedback when the crystal is hit.
+- [ ] **Set Up a Simple Scoring System** _(already made in Unity but needs integration)_
+    -   Points awarded per monster killed.
+    -   Possibly track wave count or “time survived.”
+- [ ] **Refine Enemy AI and Balancing**
+    -   Tweak spawn rates, enemy health, and damage for a more engaging pace.
+    -   Consider different enemy types if time allows (faster but weaker vs. slower but stronger).
+- [ ] **Enhance Spellcasting System**
+		-   Implement cooldowns and a basic mana resource.
+	    -   Experiment with elemental spells (fire, ice, lightning) to test synergy.
+- [ ] **Improve UI/UX**
+    -   Display player health, orb health, wave counters, and scoring in a clean layout to track progression
+    -   Add simple menus or pause screens as needed.
+- [ ] **Expand to Elemental Power-Ups**  
+    -   Introduce special items or pickups that alter spell damage or add new spell effects.
+ 
+**Ideas for Broader Features (If time permits):**
+
+-   **Mini Open-World Features** add environment or small open world area with shops, additional monsters, puzzle areas, treasure chests 
+-   **Explore Elemental Power-Ups** prototype collecting items that grant different spell attributes or buffs.
+- **Elemental Power-Ups**   Introduce special GameObjects (e.g.: fire/ice mushrooms/peppers/crystals) that alter spell damage or add new spell effects, and potentially add interactions between them
+		- could require inventory system for collecting power up GameObjects, or the player could automatically wields special new mana
+-   **Puzzle Integration** 
