@@ -614,8 +614,10 @@ This prototype primarily focuses on **implementation**. We are building scripts 
  
 **Ideas for Broader Features (If time permits):**
 
--   **Mini Open-World Features** add environment or small open world area with shops, additional monsters, puzzle areas, treasure chests 
+-   **Shop** with points and upgrades, and interface
+	- [inspiration game](https://www.crazygames.com/game/defend-your-castle)
 -   **Explore Elemental Power-Ups** prototype collecting items that grant different spell attributes or buffs.
 - **Elemental Power-Ups**   Introduce special GameObjects (e.g.: fire/ice mushrooms/peppers/crystals) that alter spell damage or add new spell effects, and potentially add interactions between them
-		- could require inventory system for collecting power up GameObjects, or the player could automatically wields special new mana
--   **Puzzle Integration** 
+		- could be stored in an inventory system, or the player could automatically wield special new mana (and then maybe use left and right arrow keys to switch between spell type)
+- **Mini Open World Features**  shop, puzzle area(s), treasure chests, buildings, NPC's
+	-   **Puzzle Integration** puzzle areas
