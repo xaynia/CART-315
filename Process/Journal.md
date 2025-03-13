@@ -237,7 +237,6 @@ This felt like my first time using Unity without "training wheels" (i.e.: practi
 
 I met my goal of starting a prototype this week! I am very happy about that. Tracking my time in Toggltrack has been very helpful for me to figure out how to have a better week the next week, as well as manage my time. I feel like I am getting better at navigating Github, and Rider, and Unity too – even if it feels overwhelming at times (mainly because of how much there is to know in Unity before you even use it).
 
-
 Currently I'm trying to find the right balance between learning and practicing in Unity. I plan to keep sprinkling in more guided Unity Learn tutorials (scripting and smaller game tutorials, currently), because they help me feel more comfortable using Unity. And I also plan to start start working on my weekly prototypes earlier in the week too. I think learning and practicing in Unity is exactly what I need to be doing before I can come up with a concrete idea for my final project – but I do plan on starting to checkout more Youtube videos to get ideas flowing too. 
 
 
@@ -271,13 +270,354 @@ Currently I'm trying to find the right balance between learning and practicing i
 - [Falling Sphere Prefab](https://github.com/xaynia/CART-315/blob/main/Process/Images/W5_ExplorationPrototype3/FallingSphere.png)
 - [Github Images and Notes Log](https://github.com/xaynia/CART-315/tree/main/Process/Images)  
 
+# Week 6:  Feb 20 | *Exploration Prototype 4 (Continuation)*
+
+> ## What Changed This Week
+>- Fixed the **trigger collision issue** (the spheres not disappearing on player contact), by adding the correct tag `FallingSphere` (to sphere prefab being spawned) that `PlayerTriggerZone`  script was looking for.
+>- Added a `score` variable to the Spawner (singleton): increases score when player contacts spheres
+>- Created a TextMeshPro UI display for the score
 
 
-# Week 6: Feb 20 | *Exploration Prototype 4* 
 ### Debugged Singleton Logic: Spheres Now Disappear on Player Contact
+Picking up from last time, I investigated why the spawned spheres wouldn’t disappear upon player contact. I discovered the issue: the sphere prefabs which were being spawned were missing a necessary tag that the `PlayerTriggerZone` script was checking for (missing tag: `FallingSphere`).
 
-Picking up where I left off last time, I began debugging why the spheres never disappeared last time.
+```csharp
+public class PlayerTriggerZone : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FallingSphere"))
+        {
+            if (Spawner.instance != null)
+            {
+                Spawner.instance.RemoveSphere(other.gameObject);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
+        }
+    }
+}
+```
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjcxMDI5NjgsOTQ2MzQ0Mjc3XX0=
--->
+Once I added the correct tag, `PlayerTriggerZone` script checks for the sphere’s tag, then it calls `Spawner.instance.RemoveSphere` (from `Spawner` Singleton script) to remove and destroy the sphere whenever the player collides with it.
+![Singleton Logic: Player Contact Makes Spawned Sphere Disappear](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/SingletonLogicDebug-SpheresDissapearonPlayerContact.gif)
+
+### Added Score in Singleton Spawner and Score UI (TextMeshPro)
+Using the same newly working logic, I introduced a `score` variable to the `Spawner` singleton script. Whenever `RemoveSphere` is called (i.e., when a sphere is collected by the player), the score increases by one.
+
+To display the score, I created a UI Canvas with a child TextMeshPro UI object. I then added a `ScoreDisplay` script
+```csharp 
+using System.Collections;  
+using System.Collections.Generic;  
+using UnityEngine;  
+using TMPro;  
+  
+// Score Display Script
+public class ScoreDisplay : MonoBehaviour {  
+  public TextMeshProUGUI scoreText;  
+  
+  void Update() {  
+  //  Show the current score (Spheres player collides with [from the Spawner])  
+  scoreText.text = "Score: " + Spawner.instance.score;  
+ }}
+```
+to the child, and in the inspector dragged the TextMeshPro component onto the script's scoreText field. This script references `Spawner.instance.score` to show the current score on the screen.
+
+![Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/ScoreUI.gif)
+I adjusted child Y position settings, max/min size, alignment, and position to be small in the top left corner. I set parent render mode to overlay too.
+![Resized Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/SmallerScoreUI.gif)
+
+## Challenges (Troubleshooting)
+
+### Adding TextMeshPro UI
+
+I spent about an hour fixing the hot-pink text issue in TextMeshPro. This happened because I added the UI code to the Score GameObject in play mode, and missed a notification from Unity to download the TMP Essential Resources. so once I realized I needed this, first, I manually imported them TMP resources in Unity.
+![Debugging UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/Debugging.png)
+ Then, I changed the font asset and material preset for `TMP_SubMeshUI` components to **LiberationSans SDF** and **Unity Atlas Material**, which solved the problem
+![Score UI](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/W6_ExplorationPrototype4/ScoreUI.gif)
+
+
+ ### Rider: Push Error
+After I finally got everything working and tested the UI, I pushed everything in Rider (the changes and a few hundred of the new TextMeshPro  files), Rider sent a notification to authorize Github again in the browser which I accidentally closed, and then I got the error.
+ 
+	 error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400 send-pack: unexpected disconnect while reading sideband packet.
+
+ I spent another hour *attempting* to troubleshoot the error in Rider, and Github Desktop (I tried reauthorizing Github, undoing the changes, trying to push them (because nothing was actually pushed), etc).
+
+After coming back to it the next day and [looking up the issue online](https://stackoverflow.com/questions/77856025/git-error-rpc-failed-http-400-curl-22-the-requested-url-returned-error-400-se), I fixed by increasing the buffer size with:
+
+	git config http.postBuffer 524288000
+
+Then I re-attempted the push. I also added a `.gitignore` to exclude some TextMeshPro example resources.
+
+### Perfectionism and/or Time Blindness?
+I logged **22 hours this week** in TogglTrack (Monday–Wednesday). Yet despite putting in a lot of time, I feel like I haven’t accomplished as much as I’d hoped. I suspect perfectionism and/or maybe time blindness are making tasks take longer. I’m trying to balance my desire to produce high-quality work with the reality that programming can be time-consuming—and more so when I’m still in the early stages of learning, while learning two programming languages at once.
+
+### Balancing Unity Progress and Documentation
+I also find I’m spending a considerable chunk of my time creating journal entries to document what I’m doing. This may be due to perfectionism, but I'm feeling spread thin.  I also need to focus on making real progress in Unity, researching game ideas, and practicing new scripting concepts. I’m still trying to find a happy medium between documenting everything and keeping a good development pace. 
+
+## Reflection
+Debugging the UI took longer than expected, mainly because I was juggling multiple scripts and couldn’t pinpoint the problem. It turned out to be a small oversight—missing the proper tag. Even so, it took me about an hour to trace that down.
+
+Troubleshooting the Rider push error also took a long time. In hindsight I spent alot of time blindly trying to fix the problem and I should have looked it up sooner. I'm still not entirely sure if the TextMeshPro files caused the error, or if closing Github authorization popup tab during the push caused the error, but I assume it's the former.
+
+Despite the challenge, I feel more organized this week. I started earlier, kept track of my time, and wrote my journal as I went along. This consistent workflow makes me feel like I’m finally getting into a programmer’s mindset.
+
+I also discovered _Gifski_, a Mac app that converts videos into GIFs, making my documentation more visual. Additionally, I’ve been using _StackEdit_ for Markdown writing, which helps me preview changes in real time (though it lacks custom commit messages) – It's really helping me learn markdown well.
+
+### Goals:
+My main goal since the last prototype was to finish what I started (to fix the trigger collision logic), which I accomplished. Building on this, I also added a score system with UI to track how many spheres the player collects.
+
+### What I learned:
+1.  How to add TextMeshPro UI to track score.
+2.  To always check Rider for warning notifications (that’s how I discovered a missing `<tag>`).
+3.  Be careful when pushing big file libraries (they may cause Github can cause errors—.gitignore is essential.)
+
+### Accomplishments: Success?:
+On one hand, I’m happy to have achieved my goal of fixing the trigger collision and adding a score system—those were my main technical objectives. On the other hand, I still feel like I should be doing more in Unity itself. So, while the outcome is good, I do feel overwhelmed and wish I had more tangible progress in Unity. Given that programming is new to me (and I'm learning two languages concurrently). However, I keep reminding myself learning learning to code takes time.
+
+### Future Exploration:
+Now that I have the score system and sphere spawner working, I think it would be fun to turn the prototype into a game of soccer or baseball to keep exploring. Maybe with other NPC characters too.
+
+Another idea would be build a skyscraper and mirrored/glass room like the original idea.
+
+I want to begin experimenting with multiple scenes, and start  building an environment so I can start adding special objects (like I mentioned in bonus entry) too. And then also and start exploring player customization or abilities.
+
+Eventually, I’d love to implement a magical mechanic that maybe ties into the abilities. Even though it feels far off, I’m excited by the idea of adding magic powers, spells, or elemental effects to the gameplay (I'm inspired by Eldin Ring too).
+
+## Resources
+- [Link to Project Folder (Continuation of Last Week’s Prototype 3)](https://github.com/xaynia/CART-315/tree/main/Projects/ExplorationPrototype3) 
+- [Week 6 Image Log](https://github.com/xaynia/CART-315/tree/main/Process/Images/W6_ExplorationPrototype4)
+
+# Week 6: Extra Credit Game Analysis: 
+
+> **Game Analysis:**
+> Find a game that you know well or are intrigued by. 
+> What decisions have the designers made that cause the game to be interesting? 
+> Where have they failed? Think mechanically rather than thematically.
+>  What ideas/methods/techniques do you think you could borrow for future projects?
+
+ ### *Zelda Tears of The Kingdom* (TOTK)
+ 
+##  Interesting Design Decisions
+
+#### Link's Abilities:
+Link has several abilities, each earned during a shrine. These abilities allow you to manipulate objects, affecting the way you can interact with the game.
+
+- **Ultrahand:** move/rotate/bind objects
+	- bind multiple objects (up to 21) together to create new objects 
+		- bind zonai devices with objects to create vehicles, flying devices
+- **Fuse:** combine objects to create new items
+	- combine weapons/shields with materials in the world
+- **Recall:** allows you to reverse an objects movement in time.
+- **Ascend:** allows link to travel through solid ceilings above him
+
+These abilities open up a new realm of creative possibilities. They’re interesting because they let players choose *how* to tackle puzzles and combat, encouraging inventive solutions. 
+
+For example:
+- Reach areas you normally couldn’t by combining Recall, Ascend, and Ultrahand.
+- Use Ultrahand in combat (e.g: dropping boulders on enemies). You can move multiple items at once too.
+- Fuse allows you create a range of special weapons/shields/arrows
+	- e.g: 
+		- fuse an icicle with a weapon/shield to create a freezing weapon (i.e., freeze enemies)
+		- freeze monster parts (shows fuse attack power) with weapon to create strong weapon 
+		- fuse inventory item to arrow when shooting arrow
+			- e.g:
+				- bomb flower + arrow = bomb arrow
+				- fire fruit + arrow = flaming arrow
+
+### Physics
+What makes these abilities so special is how they interact and change the physics of objects. This interplay is central to the entire game (exploring, combat puzzles, etc). For instance, the game’s physics engine treats every fused item or Zonai device as a physical object with its own weight, collision, and momentum—so when you bind them together, the physics engine tries to simulate them realistically. This enables players to experiment with a sense that anything could work if they find the right combination or angle, which not only fuels creativity but also solutions to challenges.
+
+## Design Fails
+### Overly Exploitable Ability Physics: 
+The game’s physics engine and abilities create endless possibilities. Vehicles and flying devices made from Zonai devices are intended to be limited by Zonai battery. However, because you can combine almost anything, it’s common to see vehicles **modified** in ways the developers never intended.
+
+**Examples:**
+
+**e.g: No Battery Infinite Flight Aircraft**  
+I found (one of many examples on [Youtube](https://www.youtube.com/watch?v=7uzDn_20oiE&t=10s)) this build which does this to create this exploit:
+>- **Fuse** a Flux Construct I block part to your shield/weapon (you don't even need to defeat it, you can just attack it, and fuse his part)
+>- **Fuse** a propeller (from *Turbine Power* Shrine) to your shield/weapon. 
+>- Then go to Peilison in Tarrey Town, an NPC you can pay to **unfuse** them. 
+>- Then you can use **ultrahand** to bind the parts together to create the build 
+>- Also needed: speark-like weapon (e.g. pitchfork), and a Zonai steering stick (uses no Zonai power)
+
+This exploit bypasses the limit (Zonai power, and intended flying devices) created by the game entirely. And by fusing and unfusing items, players can gain access to building blocks they weren't intended to use to build. Since it completely sidesteps the energy-cell system (collecting batteries, managing flight time), core progression elements become moot.
+
+**e.g:  Infinite Battery Exploit with Cooking Pots**
+>- When flying with a hot air balloon, you normally lose altitude if the battery depletes. By opening your inventory and using a single-use cooking pot (Zonai item), you effectively reset or recharge your battery, preventing the balloon from dropping.
+
+The original design goal—requiring players to plan battery usage—is undermined when you can simply reset your Zonai energy on demand.
+
+**e.g: Preventing Gliders from Despawning**
+>-   If you attach extra fans backward on a glider and mount a steering stick, the glider won’t nosedive or despawn once battery runs out.
+>-   It essentially remains functional, letting you fly indefinitely without burning additional resources.
+
+Glider despawning was intended to limit flight duration. This exploit overrides the limitation, which again, makes exploration become trivial.
+
+**e.g: Infinate Heigh Glitch**
+>- If you place a stabilizer onto a U-shaped block (from the depths), stand in it, trigger a memory cutscene, and exit. 
+>- This can catapult Link high into the sky, effectively creating infinite height gain
+
+This glitch bypasses standard travel mechanics (e.g.: rockets, hot air balloons) which again have limitations. This matters mechanically because it allows players to bypass environmental challenges and achievements (like climbing mountains, or reaching floating islands, etc).
+
+### Unbalanced Arrow Supply/Demand
+Arrows are in high demand and can be frustratingly scarce or expensive, prompting repetitive rupee farming methods, or infinate arrow glitches/exploits. 
+
+Arrows are in high demand but can be scarce or expensive, encouraging repetitive rupee farming (e.g., gem farming from Stone Talus spawns) or reliance on infinite-arrow glitches/exploits. The pricing and availability of arrows could perhaps be a design oversight. While the developers likely intended some scarcity, it can feel overly punishing or tedious, driving players to repetitive grinds just to get basic resources.
+
+### Save/Load Abuse: 
+Players can save right before a difficult fight and reload repeatedly if they fail, negating many of the intended risks. This design choice removes tension from high stake battles because it removes risk (penalty and losses), and inadvertently reduces difficulty. Some players appreciate it; others see it as diminishing challenge.
+
+## Borrowable Ideas/Methods/Techniques for Future Projects
+
+**The creative abilities and physics truly form a double-edged sword.** On one hand, Link’s expansive toolkit is a huge part of what makes the game so appealing, because there are practically endless possibilities to tackle any situation.
+
+On the other hand, with so much creative freedom, players naturally discover ways to bypass design intent—like building flying vehicles that ignore intended flight-time limits. I can see why TOTK puts restrictions on flying devices, given that real-life aircraft have resource constraints. Meanwhile, other games (like GTA) don’t bother with flight limits (planes needing no fuel), providing a whole different play experience without those concerns.
+
+Still, I’ve got to give props to the players and TOTK for crafting such a robust physics simulation, where everyone can invent and test imaginative creations in ways that even the developers might not have foreseen.
+
+### Player Abilities:
+What I would takeaway from TOTK, is the idea of the abilities being something people could only dream of having. I would opt for some different abilities, thinking about guardrails to prevent exploits (e.g: balance them with resource costs or situational limitations)
+- Elemental manipulation (player can manipulate fire, air, water, earth, light)
+- Teleportation (similar to map teleportation in TOTK)
+- Necromancy
+- Ability for *character* to fly (defy physics)
+
+### Game Physics Ideas:
+- Element interaction
+	- e.g: 
+		- Ice and fire (and magma when you combine them)
+		- Fire melts ice
+		- Water can heat/freeze 
+		- Food can heat/freeze
+
+### Cooking Mechanic:
+I love the cooking mechanic in TOTK. I love how it enables you to explore, gather items, and experiment. The cutscene is wonderful too, and the experience feels very cozy. I do wish, however, there was *more* recipes creations. 
+
+**Some of my favourite aspects of TOTK cooking:**
+
+There are so many **different ways to cook**:
+- **Meal:** food ingredients cooked in a pot 
+- **Elixir:** critter and monster part cooked in a pot
+- **Roast:** food cooked by fire (or extreme heat)
+- **Frozen:** food laid on freezing ground
+- **Boiled:** egg put in hot spring
+- **Fairy Tonic:** fairy + recipe
+- **Dubious Food:** minimally restores HP (recipe fail)
+
+And different cooking **effects**:
+- **Meal:** restores hearts (HP), special effects
+- **Elixir:** restores 2x hearts (HP), special effects
+- **Roast:** restores less hearts (HP), but stacks in inventory
+- **Frozen:** provides heat resistance
+	- can fuse to shield to shield surf
+- **Boiled:** egg put in hot spring
+- **Fairy Tonic:** restores 2x hearts (HP), prevents dubious recipe
+
+And different **ingredient effects** to cook with:
+- **Hearty**
+- **Spicy**
+- **Chill**
+- **Mighty**: increases attack
+- Normal
+
+### Object Special Effects:
+An overarching theme of cooking and fuse, is **object properties which have effects**. I like the idea of adding special properties to objects in the game (herbs, fruits, gems, etc) that be used (e.g. cooking, to make weapons more powerful) to encourage players to combine items in strategic ways.
+
+## Closing Thoughts
+In the end, what I love most about _Tears of the Kingdom_ is its ability to **spark creativity** through abilities and physics—letting you **experiment** and solve challenges in countless ways. This design is definitely a double-edged sword: the same openness that makes the game so fascinating can also lead to players bypassing large chunks of content. Still, I’m blown away by just how expansive and polished the physics system is, even if replicating it on that scale would be tough for most projects. Instead, I’d aim to borrow some of my favorite ideas, like **player abilities, dynamic cooking, objects with special properties, and elemental interactions**—and adapt the abilities with a bit more caution.
+
+# Week 7: Iterative Prototype 1
+> Journal about the first stage of your prototyping process. What was your idea? What specific questions where you trying to answer (goals)? Was it a look/feel, role, implementation prototype?What fidelity levels are you dealing with? What did you learn and what are the next steps?
+
+## Idea
+Our primary concept is a **defend-the-castle** style game where the player must protect a magical crystal (or orb, etc) from waves of incoming monsters. The core mechanics revolve around spellcasting: the player uses projectiles or spells to repel enemies that spawn at increasing rates. This forms the foundation of our game, and we plan to layer additional features—like varying environments, elemental power-ups, and possibly an inventory system—after we establish the basic combat loop.
+
+### Design Values
+1.  **Immersion in a Magical World**: We want players to feel truly embedded in a fantasy realm, experiencing the thrill of spellcasting and defending a sacred artifact.
+2.  **Progression & Challenge**: As waves increase in difficulty, the sense of progression is key, offering a rewarding loop for players who successfully upgrade or learn new spells.
+3.  **Scalability**: Start with a simple but solid core (castle defense), then scale up with new elements (inventory, environment interactions, elemental powers) if time permits.
+4.  **Player Agency**: The player should have multiple spellcasting choices and strategic options (e.g., positioning, resource management) to keep the gameplay engaging and varied.
+
+### Three favourite ideas
+1.   **Mini Open-World with Combat & Magic**  
+    Inspired by _Zelda: TOTK_ and _Elden Ring_, a small but explorable environment where players can gather resources for spells, interact with NPCs, and fight roaming monsters.
+    
+2.   **Horde Defense with Elemental Interactions**  
+    Waves of enemies approach while the player uses elemental spells (fire, ice, lightning, etc.) that can combine for special effects (e.g., oil + fire = increased burn damage).
+    
+3.   **Puzzle-Integrated Spellcasting**  
+    A puzzle layer in which spell combinations unlock doors or reveal hidden paths—possibly using illusions or invisibility to navigate stealth segments.
+    
+We ultimately chose to focus on the **horde defense** aspect first, as it offers a clear core challenge and is easier to implement in our initial prototype.
+
+## Goals
+
+First, we aim to get the barebones foundation of our defend-the-castle game working. These steps will let us test the core loop: the player casts spells at waves of monsters trying to destroy the orb.
+### Weekly Goals
+- [ ]    **Create a Monster GameObject** (basic model/placeholder)
+- [ ] **Create a Crystal/Orb GameObject** (the target to defend)
+- [ ] **Implement Basic Projectile/Spellcasting**
+	- Simple projectile script
+	- Collision detection with monsters (could potentially use my previous collision detection script)
+- [ ] **Set Up a Simple Wave Spawner** (enemy waves) (could use my spawner script)
+	- Very basic AI to move towards the orb
+- [ ] **Implement Health & Damage**
+	- Monster health/dying on 0 HP
+	- Orb health (game over if destroyed)
+	- Player health
+- [ ]    **Basic UI feedback** (player health, crystal health, score).
+
+Our immediate goal is to validate the core gameplay loop—does defending an object with spell-based combat feel satisfying, challenging, and fun? By testing early, we can confirm whether our combat mechanics are engaging enough to expand upon.
+
+##  Questions We’re Trying to Answer
+1.  Can we implement smooth spellcasting mechanics with a basic projectile system in Unity?
+2.  Is the pacing of enemy waves balanced for a “defend-the-orb” style challenge to maintain player engagement?
+3.  How feasible is it to add additional features (inventory, elemental combos, etc.) later without breaking the core loop? 
+
+### Was it a look/feel, role, or implementation prototype?
+This prototype primarily focuses on **implementation**. We are building scripts for monster AI, projectile casting, and object defense to see if our gameplay mechanics work under real conditions. While we do care about some basic aesthetic consistency (a fantasy look/feel), the priority is functional testing over polished visuals.
+
+### Fidelity Levels
+**Low- to Mid-Fidelity**: We’re using placeholder 3D assets or basic shapes, as well as simple UI elements for scoring and health. This allows us to iterate on gameplay without getting bogged down by final art or detailed environment design.
+
+## Next Steps
+- [ ] **Integrate Scoring** using existing scoring system
+- [ ] **Implement Basic Spellcasting**:
+    -   Use a projectile system in Unity.
+    -   Ensure it feels responsive (speed, damage, cooldown).
+- [ ] **Create Enemy Waves**:
+    -   Set up a spawner that gradually increases wave difficulty.
+    -   Basic AI: move towards the crystal/orb and attempt to damage it.
+    - Adjust speed, spawn rate, difficulty)
+- [ ] **Protect the Crystal**:
+    -   Implement a health system for the orb (and possibly the player).
+    -   Show basic feedback when the crystal is hit.
+- [ ] **Set Up a Simple Scoring System** _(already made in Unity but needs integration)_
+    -   Points awarded per monster killed.
+    -   Possibly track wave count or “time survived.”
+- [ ] **Refine Enemy AI and Balancing**
+    -   Tweak spawn rates, enemy health, and damage for a more engaging pace.
+    -   Consider different enemy types if time allows (faster but weaker vs. slower but stronger).
+- [ ] **Enhance Spellcasting System**
+		-   Implement cooldowns and a basic mana resource.
+	    -   Experiment with elemental spells (fire, ice, lightning) to test synergy.
+- [ ] **Improve UI/UX**
+    -   Display player health, orb health, wave counters, and scoring in a clean layout to track progression
+    -   Add simple menus or pause screens as needed.
+- [ ] **Expand to Elemental Power-Ups**  
+    -   Introduce special items or pickups that alter spell damage or add new spell effects.
+ 
+**Ideas for Broader Features (If time permits):**
+
+-   **Shop** with points and upgrades, and interface
+	- [inspiration game](https://www.crazygames.com/game/defend-your-castle)
+-   **Explore Elemental Power-Ups** prototype collecting items that grant different spell attributes or buffs.
+- **Elemental Power-Ups**   Introduce special GameObjects (e.g.: fire/ice mushrooms/peppers/crystals) that alter spell damage or add new spell effects, and potentially add interactions between them
+		- could be stored in an inventory system, or the player could automatically wield special new mana (and then maybe use left and right arrow keys to switch between spell type)
+- **Mini Open World Features**  shop, puzzle area(s), treasure chests, buildings, NPC's
+	-   **Puzzle Integration** puzzle areas
