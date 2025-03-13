@@ -621,3 +621,122 @@ This prototype primarily focuses on **implementation**. We are building scripts 
 		- could be stored in an inventory system, or the player could automatically wield special new mana (and then maybe use left and right arrow keys to switch between spell type)
 - **Mini Open World Features**  shop, puzzle area(s), treasure chests, buildings, NPC's
 	-   **Puzzle Integration** puzzle areas
+
+
+# Week 8: Iterative Prototype 2: Adding Enemy AI & Health Mechanics
+
+![AttackHP](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Attack2.gif)
+
+> Journal about the first stage of your prototyping process. What was your idea? What specific questions were you trying to answer (goals)? Was it a look/feel, role, or implementation prototype? What fidelity levels are you dealing with? What did you learn and what are the next steps?
+
+### Last Weeks Accomplished Goals
+- [x]    **Create a Monster GameObject** (basic model/placeholder)
+- [x] **Create a Crystal/Orb GameObject** (the target to defend)
+- [ ] **Implement Basic Projectile/Spellcasting**
+	- Simple projectile script
+	- Collision detection with monsters (could potentially use my previous collision detection script)
+- [ ] **Set Up a Simple Wave Spawner** (enemy waves) (could use my spawner script)
+	- Very basic AI to move towards the orb
+- [x] **Implement Health & Damage**
+	- Monster health/dying on 0 HP
+	- Orb health (game over if destroyed)
+	- Player health
+- [x]    **Basic UI feedback** (player health, crystal health, score).
+
+## Idea
+
+Building on the concept of a **defend-the-object, hoarde** style game with magic (spellcasting), this week I focused on implementing the fundamental systems behind **enemy movement**, **enemy attacks**, and an **HP/Health bar** system. The goal remains to create a horde-defense scenario where enemies spawn, move toward a critical target (like a magical crystal or orb), and attempt to damage it, while the player defends.
+
+I introduced Enemy AI scripts that let enemies move toward the Target, attack if in range, and manage their own health. I also added a universal Health script that can be attached to the Player, the Target, and any Enemy. Also, I implemented a Health Bar UI element that appears when attacked, giving immediate visual feedback on damage.
+
+1.  **Enemy Movement & Attack**
+    -   The enemy moves toward a specified `Target` transform and attacks when within `attackRange`.
+    -   A cooldown prevents it from spamming the attack every frame, preserving balance and clarity.
+2.  **Health Script**
+    -   Any character/object can have `maxHealth`, take damage via `TakeDamage(float)`, and handle death with a simple `Die()` method.
+    -   An event-based approach (`OnHealthChanged`) allows the **Health Bar** to update only when damage actually occurs.
+3.  **Health Bar UI**
+    -   A World Space canvas and a fill `Image` let me display health visually above each entity.
+    -   It’s now trivial to see if the Target or an Enemy is near death, or if the Player is about to be overrun.
+
+### Design Values
+
+-   **Clarity of Core Mechanics**: Ensure that the basic loop of “enemy spawns → enemy chases target → target/enemy takes damage” is solid.
+-   **Simplicity and Extensibility**: Keep the scripts modular (Enemy script, Health script, HealthBar script) so they can be easily extended for multiple enemy types, player attacks, etc.
+-   **Minimal**: working without game assets to get the core mechanics down before adding aesthetic features
+- **Immediate Visual Feedback**: Add a minimal but clear UI component (the health bar) to show damage and health changes, to quickly grasp what’s happening when testing
+
+## Goals
+My goal was to start implementing a core foundation (enemy AI movement and attack, health logic [i.e. damage & death],) to setup a basic defend-the-object prototype. This lays the groundwork for future expansions— enemy hordes, adding player spellcasting, and so on.
+
+## Questions to Answer
+
+-  **Does a single “Health” component work well for multiple objects?**
+    -   Yes—things remain consistent, and debugging is simpler.
+-  **Is the movement & attack AI robust enough for horde-style gameplay?**
+    -   For a basic prototype, yes. I can build on it with pathfinding or advanced behaviors later.
+
+
+### Was it a look/feel, role, or implementation prototype?
+
+**Implementation Prototype**: The focus was on functional scripts (Enemy logic, HP system, UI feedback). The look remains placeholder-like, with minimal art (without assets) to validate the underlying mechanics, to build a foundation to expand upon later. Even so, the look/feel aspect of having a floating health bar contributes to clarity in the user experience.
+
+### Fidelity Levels
+
+**Low to Mid-Fidelity**: Using simple capsule placeholders for enemies, a minimal cube target object, and a simple green/red health bar. There’s no finalized art or animation—just enough mimimal visuals to verify functionality.
+
+## Accomplishments
+### Created an Enemy Script (Movement & Attack) (`Enemy.cs`):
+   - **Movement**: Moves the enemy toward a designated `Target` transform using a `moveSpeed`.
+   - ![Enemy-player.gif](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Enemy-player.gif)
+   - **Attack Logic**:
+        -   Defines an `attackRange` to decide how close the enemy must be to attack.
+        -   Uses `attackDamage` to define how much damage is applied.
+        -   Includes an `attackCooldown` to avoid attacking every single frame.
+        -   ![Enemy Settings](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Enemy-script2.png)
+- **Health System**: The enemy (as well as the player and target) can have the same `Health` script attached, allowing them to take damage and potentially be destroyed at 0 HP.
+
+### Implemented a Universal Health Script (`Health.cs`):
+   - Stores `maxHealth` and `currentHealth`.
+   -  ![Health Settings](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Health-script.png)
+   - Allows you to customize unique max health for any object (i.e., player, object, target) you put it on
+    -  Provides a `TakeDamage(float amount)` method for reducing HP and checking for death.
+    -  Notifies health bar via event (`OnHealthChanged`) when health changes
+    - handle death with a simple `Die()` method.
+
+### Added a Universal Health Bar UI (`HealthBar.cs)`:
+
+   -   Created health bar UI using a World Space Canvas with a child Image serving as the fill for the health bar to display health visually above any objects head
+   -   Ensures the bar only appears and depletes when the character is damaged.
+   -   Positioned the health bar above each entity’s head for clarity
+![Healthbar.gif](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Healthbar.gif)
+
+
+## What I Learned
+
+1.  **Reusability is Key**: Having one Health and HealthBar script for all objects saves a lot of work and ensures consistent damage/HP behavior. 
+2.  **Feedback is Crucial**: Seeing an on-screen health bar clarifies the state of battle—makes it easier to test AI logic or balance.
+3.  **Minimalism > Details to Start**: The simple approach to AI (direct movement to Target, no pathfinding) meets the immediate needs but might need upgrading 
+
+## Next Steps (Goals)
+
+- [ ]   **Magic/Projectile Player Attack Mechanism**: Add projectile magic for the player to damage enemies 
+	- calling `TakeDamage` on hit)
+- [ ]   **Integrate the Spawner** so multiple enemies (hordes) appear over time. 	
+- [ ]   **Confiagure Horde Code**: Test how the current movement and attack logic scales with many enemies.
+	- Tweak spawn rates, speeds, and wave size to test the core loop.
+- [ ]   **Allow Enemies to Attack the Player** (not just the target), so the player must actively defend themselves.
+- [ ]   **Polish & Balancing**: Tweak HP, damage values, and wave pacing to ensure the game is both challenging and fair.
+
+### Question to answer: Once hoardes are set up with the spawner, will players remain engaged?
+
+>**Longer-Term Ideas** (If time allows):
+>- **Hoarde levels**: After integrating the spawner, add variation (levels, increasing difficulty) in enemy hoardes
+>-   **Spell Variation** for the player: implement multiple spell types (fire, ice, chain lightning, etc.).
+>-   **UI Enhancements**: More sophisticated health bars, possibly with floating damage text or icons.
+>- **Shop**
+>-  **Add “Death” Feedback**: Animations, sound effects, or particle effects for both enemies and the Target when they die.
+
+## Links:
+- [Link to Project](https://github.com/xaynia/CART-315/tree/main/Projects/Final)
+- [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
