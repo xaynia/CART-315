@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 //score display
 
 public class ScoreDisplay : MonoBehaviour {
