@@ -740,3 +740,30 @@ My goal was to start implementing a core foundation (enemy AI movement and attac
 ## Links:
 - [Link to Project](https://github.com/xaynia/CART-315/tree/main/Projects/Final)
 - [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
+
+# Week 9: Iterative Prototype 3: 
+
+## Goals
+- [ ]  **Test how the current movement and attack logic scales with many enemies**
+- [ ] **integrate score with enemies**
+	- [ ] When enemies get killed they drop a score (score points per monster killed)
+- [ ]  **Integrate the spawner**: so multiple enemies (hordes) appear over time
+- [ ] **Add Parameters to wave to make it harder** 
+
+## Accomplished
+![Setup health system on enemies](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/FinalProject/Enemy-health.gif)
+Setup health system on enemies
+- [x] Added Health.cs to enemy prefabs 
+- [x] Began getting score to work with UI (when enemy shoots)
+
+### To do:
+ - [x] Fix errors in cod
+ - [x] Fix script score UI
+ - [ ] Add target and configure it with the rest of the code
+ - more [tba](https://docs.google.com/document/d/1r3TfF7R476a0rbi3PBWWZrRVH3jYj5AJKdqc2FuSl5Q/edit?usp=sharing)
+	
+### Notes:
+I will review everything after I get some rest (and it will be complete by the weekend)
+
+
+
