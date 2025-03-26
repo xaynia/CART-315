@@ -741,29 +741,109 @@ My goal was to start implementing a core foundation (enemy AI movement and attac
 - [Link to Project](https://github.com/xaynia/CART-315/tree/main/Projects/Final)
 - [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
 
-# Week 9: Iterative Prototype 3: 
+# Week 9: Iterative Prototype 3: Added Game Over UI, Assets, Level Design
 
-## Goals
-- [ ]  **Test how the current movement and attack logic scales with many enemies**
-- [ ] **integrate score with enemies**
-	- [ ] When enemies get killed they drop a score (score points per monster killed)
-- [ ]  **Integrate the spawner**: so multiple enemies (hordes) appear over time
-- [ ] **Add Parameters to wave to make it harder** 
+![TestingAssets](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/TestingAssets2.png)
 
-## Accomplished
-![Setup health system on enemies](https://raw.githubusercontent.com/xaynia/CART-315/main/Process/Images/FinalProject/Enemy-health.gif)
-Setup health system on enemies
-- [x] Added Health.cs to enemy prefabs 
-- [x] Began getting score to work with UI (when enemy shoots)
+### Accomplished Goals
 
-### To do:
- - [x] Fix errors in cod
- - [x] Fix script score UI
- - [ ] Add target and configure it with the rest of the code
- - more [tba](https://docs.google.com/document/d/1r3TfF7R476a0rbi3PBWWZrRVH3jYj5AJKdqc2FuSl5Q/edit?usp=sharing)
-	
-### Notes:
-I will review everything after I get some rest (and it will be complete by the weekend)
+ - [x] Added Game Over UI (as a new scene)
+ - [x] Downloaded Assets
+ - [x] Started Level Design
+ - [x] Added health bar to enemies
+
+## Idea
+With the core loop in mind, we are adding the most important features. The idea is during the wave you attack the horde while picking up objects in the scene and collecting them in your inventory. Then after the wave you can use the items you collected at the crafting area for a spell/weapon upgrade(s). Then repeat.
+
+### Core Loop
+
+ - **Level 1:**
+	 - Horde
+		 - Waves coming to player (waves progressively getting 
+	 - 	 Gather items in the level
+ - **Craft**
+	 - Where you can use the items you collected to upgrade your weapon (e.g.: use red mushrooms you collected to unlock flamethrower)
+ - **Level 2...** (repeat)
 
 
+## Accomplishments
 
+### Added Game Over UI 
+
+![GameOverScene](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/GameOver.png)
+
+First I made as a scene, using TextMeshPro again. The game over UI is called when the core aka target dies, causing the scene manager to load the game over scene, which pops up "Game Over" text, and a "Try Again" button, which brings the user back to the level when pressed.
+
+In the game over scene: I created a UI canvas GameObject (with script), with a text child "Game Over", and a button child which on click () uses the parent script to run GameOverMenu OnTryAgainButtonPressed (). The button child has a text child for the "Try Again" text.
+
+The script uses `usingUnityEngine.SceneManagement;` to call the new scene with `SceneManager.LoadScene()`
+
+And using the health script, when the core (aka target) dies it calls a cursor (to click the try again button), followed by SceneManager to load the game over scene
+`SceneManager.LoadScene("Scenes/Game Scene/GameOverScene");`
+
+This is the basic logic for the UI, and the idea is to add more to it later (i.e.: high score, save, etc)
+
+![GameOver](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/GameOver2.gif)
+
+### Downloaded Assets
+I downloaded a bunch of assets to start designing and customizing the level.
+
+**Questions**:
+
+ - What is the difference between Built-in vs. URP (Universal Render Pipeline) vs. HDRP assets. 
+ - When assets load in hot pink: are they incompatible? can they be converted?
+ -  What is the asset manager useful for? how do you set it up?
+
+
+### Started Game Level/Scene Design
+
+#### Adding assets:
+I'm using the assets to design the level for the game. I've made a scene to experiment with them. 
+
+
+## What I Learned
+
+To add a game over scene, I had to add a camera and event system for it to work properly. The camera had to be added to avoid a "no camera" popup over the UI when testing it. And the EventSystem is added to detect mouseclicks. Also I added all the scenes.
+
+To use the scene manager to swap scenes, the scenes must be added to to the build profile (so the scene manager can load it). I used this for my game over UI.
+
+
+## Next Steps (Goals)
+
+ - [ ] Find red asset for collectable GameObject to craft flamethrower (red plants/mushrooms/gems etc)
+ - [ ] Finish level/scene
+	 - [ ] Add red collectable assets
+ - [ ] Update Core/target health to enemy health bar
+ - [ ] Add Wave Spawner to Spawner script: 
+ 
+**UI:**
+ 
+ - [ ] Add save system
+ - [ ] Add high score
+ - [ ] Configure score UI working (so it updates with enemies killed)
+
+**Core/target:**
+ 
+ - [ ] Swap health bar (swap out Health.cs with enemy health bar)
+
+**Player:**
+ - [ ] Add health (so enemies can damage the player)
+	 - [ ] Add first person health bar
+
+**Enemies:**
+ - [ ] Add damage player feature (they currently follow the player but do no damage)
+ - [ ] Add attack and damage core 
+
+
+### Question to answer: Once hoardes are set up with the spawner, will players remain engaged?
+
+>**Longer-Term Ideas** (If time allows):
+>- **Add bomb characters**: Add bomb character ([asset store](https://assetstore.unity.com/packages/3d/characters/3d-monster-bomb-145319)) to the level the player can explode to strategically do more damage
+>- **Add sounds**: music, death sound effects, spell sound effects, etc...
+>- **Add more crafting objects for different upgrades**: 
+>- **Add more unique levels**
+
+
+## Links:
+- [Link to Shared Project](https://github.com/Noe235/CART315FinalProject)
+- [Link to Project Media](link)
