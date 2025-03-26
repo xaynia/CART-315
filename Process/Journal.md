@@ -765,12 +765,16 @@ With the core loop in mind, we are adding the most important features. The idea 
 	 - Where you can use the items you collected to upgrade your weapon (e.g.: use red mushrooms you collected to unlock flamethrower)
  - **Level 2...** (repeat)
 
+This is a look/feel and implementation prototype. It is a look/feel prototype as I am testing assets. I am also implementing UI and designing a game level with the assets.
+
+#### Fidelity Levels:
+It's a low-medium fidelity levels, adding assets from the Unity asset store and adding UI with TextMeshPro.
 
 ## Accomplishments
 
 ### Added Game Over UI 
 
-![GameOverScene](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/GameOver.png)
+![TestingAssets](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/TestingAssets2.png)
 
 First I made as a scene, using TextMeshPro again. The game over UI is called when the core aka target dies, causing the scene manager to load the game over scene, which pops up "Game Over" text, and a "Try Again" button, which brings the user back to the level when pressed.
 
@@ -800,13 +804,11 @@ I downloaded a bunch of assets to start designing and customizing the level.
 #### Adding assets:
 I'm using the assets to design the level for the game. I've made a scene to experiment with them. 
 
-
 ## What I Learned
 
 To add a game over scene, I had to add a camera and event system for it to work properly. The camera had to be added to avoid a "no camera" popup over the UI when testing it. And the EventSystem is added to detect mouseclicks. Also I added all the scenes.
 
 To use the scene manager to swap scenes, the scenes must be added to to the build profile (so the scene manager can load it). I used this for my game over UI.
-
 
 ## Next Steps (Goals)
 
@@ -834,15 +836,11 @@ To use the scene manager to swap scenes, the scenes must be added to to the buil
  - [ ] Add damage player feature (they currently follow the player but do no damage)
  - [ ] Add attack and damage core 
 
-
-### Question to answer: Once hoardes are set up with the spawner, will players remain engaged?
-
 >**Longer-Term Ideas** (If time allows):
 >- **Add bomb characters**: Add bomb character ([asset store](https://assetstore.unity.com/packages/3d/characters/3d-monster-bomb-145319)) to the level the player can explode to strategically do more damage
 >- **Add sounds**: music, death sound effects, spell sound effects, etc...
 >- **Add more crafting objects for different upgrades**: 
 >- **Add more unique levels**
-
 
 ## Links:
 - [Link to Shared Project](https://github.com/Noe235/CART315FinalProject)
