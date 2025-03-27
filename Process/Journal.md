@@ -845,3 +845,138 @@ To use the scene manager to swap scenes, the scenes must be added to to the buil
 ## Links:
 - [Link to Shared Project](https://github.com/Noe235/CART315FinalProject)
 - [Link to Project Media](link)
+
+# Week 10: Iterative Prototype 4: 
+
+![LevelProgress](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/LevelScene.png)
+
+> Journal about the first stage of your prototyping process. What was your idea? What specific questions were you trying to answer (goals)? Was it a look/feel, role, or implementation prototype? What fidelity levels are you dealing with? What did you learn and what are the next steps?
+
+### Last Weeks Accomplished Goals
+
+ - [x] Find red asset for collectable GameObject to craft flamethrower (red plants/mushrooms/gems etc)
+ - [x] Finish level/scene 
+	 - [x] Add red collectable assets
+ - [x] Update Core/target health to enemy health bar (swap out Health.cs for enemy health bar)
+ - [x] Update Horde script to attack core
+
+## Idea
+
+#### Finish the Core Loop Foundation
+**Objective:**
+ Ensure that the player, enemies, and core interact as intended—everyone can receive damage, and enemies can target either the core or the player.
+- Update scripts so the player, enemies, and core have health, and take damage.
+- Add horde waves
+
+**Design:**
+- **Level Design:** Continue creating an aesthetic game level/environment with assets to support the horde waves.
+	- Add assets to core gameplay placeholders
+		- Red mushroom assets to collect in inventory to craft into flamethrower
+		- Crafting table asset
+- **UI**: Continue working on UI
+	- Add to game over screen:
+		- Integrate: score, save system, save system
+
+### Design Values
+
+#### Core Gameplay
+- **Complete the foundational core loop:** 
+	- Emphasize a specific satisfying core loop of collecting resources, crafting weapons, and defending the core against waves of enemies. 
+		- Resource Collection & Crafting: 
+			- Players gather resources (e.g., red mushrooms) during waves, which they will eventually use to upgrade weapons or spells.
+		- Player, enemy, core interaction:
+			- Enemies attack either to player or core
+		- Wave defense: The player and the core must survive against progressively harder waves. 
+		- UI
+	
+- **Level Design**:
+	- Start working on a low poly game scene, which can be expanded upon later (i.e., more levels and/or more detail).
+		- Add assets
+			- Core, player, enemies
+			- Crafting table
+			- Environment/landscape
+
+## Questions to Answer
+
+
+### Was it a look/feel, role, or implementation prototype?
+**Implementation prototype:** for implementing health script logic (changing Health.cs to us EnemyHealth.cs logic), and updated FollowingEnemy.cs to attack either core or player.
+
+**Look/Feel**: from integrating the assets to start solid placeholders for the level,
+
+### Fidelity Levels
+**Mid-high fidelity design:** Although not fully polished, by creating a solid foundation for our level by figuring out assets and getting designing the level, I feel confident about our design going forward. 
+
+**Mid implementation**: replacing scripts, setting up logic for wave spawning, health bars, UI. I'm getting better at this, but  always takes quite a bit of time, especially understanding script logic you haven't written. Overall, it's working but not totally optimized or polished and still has a ways to go (but it's getting there).
+
+**Mid integration:**: Some systems (crafting, wave spawning, core health) are integrated, but UI scoring, saving, and final gameplay loop need more work.
+
+
+## Accomplishments
+
+### Designed Game Level with Assets
+
+After playing around with the assets, I figured out how to convert them to Universal Render Pipeline. After I figured this, I found starting to design the level was really enjoyable, and adding the assets really brought everything to life. It's not finished, but it's a good start.
+
+![LevelProgress2](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Level.gif)
+
+I added a bunch of red mushrooms to add to the inventory to use at the crafting station to visualize them and choose one to use. The dancing mushroom is my favourite.
+
+![LevelProgress2](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/RedMushrooms.gif)
+
+### Updated Horde (FollowingEnemy.cs) to attack either core or player
+Enemies are now set up to target either the player or the core. 
+
+The enemy script (FollowingEnemy.cs) previously only followed the  player. I updated the script to attack the player only or core only. Then I added a new prefab (CoreAttacker), and set it to attack the core (with Enemy.cs in inspector).
+
+This way we can use the same script with two different prefabs, which are both easily added to the spawner (in inspect).
+
+### Updated Core (CoreHealth.cs & added asset)
+I added the Enemy.cs logic to make a new script especially for the core's health (CoreHealth.cs). Now the core has a health bar. It needs its own script since it calls the game over scene when it dies.
+
+I replaced the cylinder placeholder with an asset too
+
+![Core](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Core.gif)
+
+## What I Learned
+To convert assets when they are hot pink: First, figure out which pipeline you are using. For example, I am using Universal Render Pipeline (URP). So first I make sure the asset is compatible with URP in the asset store. Then once it's imported (and hot pink): select the materials → edit → rendering → convert selected materials to URP. Then when you go to look at the models and prefabs, they will have the right material (instead of grayed out).
+
+![Convert-to-URP](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Convert-URP.png)
+
+## Next Steps (Goals)
+
+ - [ ] Add Wave Spawner to Spawner script 
+	 - Wave 1, 2, 3...
+	 - When last enemy dies → -   If enemies = 0 and get keydown i → then spawn next wave
+ 
+**UI:**
+ 
+ - [ ] Add save system
+ - [ ] Add high score
+ - [ ] Configure score UI working (so it updates with enemies killed)
+ - [ ] Wave counter
+
+**Player:**
+ - [ ] Add health (so enemies can damage the player)
+	 - [ ] Add first person health bar
+
+**Enemies:**
+ - [ ] Add damage player feature (they currently follow the player but do no damage)
+ - [ ] Add attack and damage core 
+
+**Continue Working on Level**:
+ - [ ] Add Assets:
+	 - [ ] Crafting table
+	 - [ ] Sounds
+	 - [ ] Replace player capsules with character assets
+
+>**Longer-Term Ideas** (If time allows):
+>- **Add bomb characters**: Add bomb character ([asset store](https://assetstore.unity.com/packages/3d/characters/3d-monster-bomb-145319)) to the level the player can explode to strategically do more damage
+>- **Add sounds**: music, death sound effects, spell sound effects, etc...
+>- **Add more crafting objects for different upgrades**: 
+>- **Add more unique levels**
+
+
+## Links:
+- [Link to Shared Project](https://github.com/Noe235/CART315FinalProject)
+- [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
