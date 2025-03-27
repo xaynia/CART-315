@@ -936,7 +936,7 @@ I added the Enemy.cs logic to make a new script especially for the core's health
 
 I replaced the cylinder placeholder with an asset too
 
-![Core](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Core.gif)
+![Core](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/GameOverCore.gif)
 
 ## What I Learned
 To convert assets when they are hot pink: First, figure out which pipeline you are using. For example, I am using Universal Render Pipeline (URP). So first I make sure the asset is compatible with URP in the asset store. Then once it's imported (and hot pink): select the materials → edit → rendering → convert selected materials to URP. Then when you go to look at the models and prefabs, they will have the right material (instead of grayed out).
