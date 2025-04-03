@@ -980,3 +980,157 @@ To convert assets when they are hot pink: First, figure out which pipeline you a
 ## Links:
 - [Link to Shared Project](https://github.com/Noe235/CART315FinalProject)
 - [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
+
+# Week 11: Prototype Stage 4
+
+![LevelGhosts](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Level.png)
+
+### Last Weeks Accomplished Goals
+ - [x] Add Wave Spawner to Spawner script 
+ -  [x] Update enviroment assets
+	 - [x] Add fire powerups
+	 - [x] Added ice powerups
+	 - [x] Update enviroment
+		 - [x] Fix clouds
+		 - [x] Add cuboid animation 
+			 - [x]  Fix cuboid (core) from floating away
+ - [x] Enemies damage player  
+	
+**Enemies:**
+ - [x] Add damage player feature (they currently follow the player but do no damage)
+ - [x] Enemies: kill core
+
+## Idea
+
+### Finish Core loop:
+Still working on the core loop, but shifting from implementation to refinement going forward.
+### Our Core Loop Accomplishments: 
+> Emphasize a specific satisfying core loop of collecting resources, crafting weapons, and defending the core against waves of enemies. 
+
+ **Horde/Wave Defense**
+ - [x] Added enemy wave spawner
+ - [ ] Add to UI? (e.g.: Score (enemies killed), etc)
+
+**Gathering/Resource Collection**
+- [x]  Add assets for player gather during level and upgrade:
+	- [x] Flamethrower upgrade: red mushrooms
+	- [x] Ice spell: blue mushrooms, ice plants
+- [x]   Inventory System
+
+**Resource Gathering → Crafting → Weapon Upgrades:**
+- [x] Implemented logic
+- [ ] Test 
+
+**Combat**
+- [x] Attack:
+	- [x] Enemies attack player and core 
+	- [x] Player can attack enemies
+	- [x] Player can swap spells with keys
+- [x] Health: Enemies, player, and core have health and deal damage
+
+### Design Values
+**Level Design:**
+- Choose aesthetic: 
+	- [ ] Minimal design
+	- [ ] Add more (add more levels? assets, spells, etc)
+
+## Goals
+- Prioritize and plan what we want (to add/remove/update) for the end result
+- Test early
+	- Stress test
+- Refine
+- Polish
+
+## Questions to Answer
+
+### Was it a look/feel, role, or implementation prototype?
+**Implementation prototype:**
+- Implementing the last of the core loop
+### Fidelity Levels
+**Mid-high fidelity design:** 
+- Integrating mechanics
+- Learning how to assign assets with animations as a character, and implement existing logic to it
+- Lots of debugging while you figure this out
+
+## Accomplishments
+### Added Wave Spawner for Enemies
+I updated the EnemySpawner.cs script to manage (spawn and track) enemy waves. 
+
+It doesn't start right away, wen you press "I" it spawns the first wave (initially it spawns a wave of 10 enemies). Once the wave is defeated, the player can press "I" key to spawn the next wave which adds 10 more enemies than the previous wave (i.e., wave 2 spawns 20 enemies, wave 3 spawns 30 enemies, and so forth)
+
+- Tracks current wave (`waveIndex`)
+- - Boolean checks if a wave is spawning (yes/no) (`waveInProgress`)
+- If no wave is spawning and enemiesAlive = 0, press "I" to start a new wave 
+- `Spawnwave ( )` spawns wave number + waveIndex with wave count + additional enemies per wave
+
+### Created ghost hordes
+
+- Setup Enemy prefabs as ghost assets
+- Made a new script for them
+- Tested them
+- Added them as prefab variants
+	- They kill the player and the core
+	- The player can kill them (updated projectile script)
+
+![GhostHorde](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/GhostHorde.gif)
+
+![GhostHorde](https://github.com/xaynia/CART-315/blob/main/Process/Images/FinalProject/Ghosts.png)
+
+### Added Fire & Ice Area to Level
+- Added fire and ice area and a bunch of different mushrooms to choose for to power up weapon
+
+## What I Learned
+- Use a sandbox to test assets
+- Clear your unity cache
+
+## Question to answers: 
+**Wave defense: The player and the core must survive against progressively harder waves. How will this test?**
+- Should we add a limited time the player can spawn a new wave (e.g.: 30 seconds) to limit resource gathering?
+- Will gathering resources be too easy?
+- How will the UI compliment the waves (high score, etc). Would anything else be useful to add?
+
+**How to use Animator for characters:**
+
+**Level Design:**
+- Is the level too small? too cluttered with assets?
+- Are the resources too easy to get? 
+	- Are there too many? Should we have a short respawn window to make resources harder to get?
+- Should we add more levels?
+
+
+## Next Steps (Goals)
+
+### Testing:
+Now that the core logic has been implemented, stress testing the core loop ASAP to make sure everything runs smoothly (to debug, make adjustments, etc)
+- [ ] **Test core loop:**
+	- [ ] Stress test (many) enemy waves 
+	- [ ] Test resource gathering & crafting:
+		- [ ] Test inventory/gathering scripts
+		- [ ] Test inventory/crafting/weapon scripts
+	- [ ] Test player first person health bar (if it needs a health script, could use CoreHealth script)
+
+**UI:**
+ - [ ] Add save system
+ - [ ] Add high score
+ - [ ] Configure score UI working (so it updates with enemies killed)
+ - [ ] Wave counter
+
+### Level Ideas:
+- [ ]  Add Sounds effects
+	- [ ] Music
+	- [ ] Element sounds (fire, ice)
+	- [ ] Player sounds (attack, death)
+- [ ] Add crafting table asset for crafting?
+- [ ] Add flame/ice assets
+ - [ ] Replace player capsules with character assets
+
+>**Longer-Term Ideas** (If time allows):
+>- [ ] **Add bomb characters**: Add bomb character ([asset store](https://assetstore.unity.com/packages/3d/characters/3d-monster-bomb-145319)) to the level the player can explode to strategically do more damage
+>- [ ] **Add sounds**: music, death sound effects, spell sound effects, etc...
+>- [ ]  **Add more crafting objects for different upgrades**: 
+>- [ ] **Add another level** (depends on need)
+
+## Links:
+- [Link to Project](link)
+- [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
+
