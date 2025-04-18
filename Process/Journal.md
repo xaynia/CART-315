@@ -1134,3 +1134,65 @@ Now that the core logic has been implemented, stress testing the core loop ASAP 
 - [Link to Project](link)
 - [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
 
+
+# Week 12 – Final Polish & Build Prep  
+*(Iterative Prototype 3 / Release Candidate)*
+
+> **Journal prompt:** What last‑minute changes did we make, why, and how did we wrap everything into a playable build?
+
+
+## What Changed This Week 🛠️
+
+### 1 · Sound FX Pass
+* Imported spell clip for projectiles
+* Hooked them into `AudioManager.I.PlaySFX()` in **FPSShooter**  script.  
+  Now every cast *feels* punchy instead of silent nerf‑darts.
+
+### 2 · Game‑Balancing
+| Tweak | How we did it | Playtest takeaway |
+|-------|---------------|-------------------|
+| **Reduced enemy HP** | Serialized field on prefab → tweak → prefab variant override | Allows player now to make past wave 2-3. |
+| **10‑second inter‑wave timer** | `EnemySpawner.AutoSpawnNextWave(10f)` | Gives players time to loot/craft/ breathe. |
+| **Mushroom cost 10 → 5** | Made this into a refactored variable and set it to 5 | Players can actually reach flamethrower before rage‑quitting. |
+
+### 3 · Message Overlay UI
+* Added **HUD (Canvas)** → **MessageText (TMP)**.  
+* Tiny singleton `GameMessageUI.Show("text", seconds)` replaces important `Debug.Log`.
+    * Wave countdowns  
+    * Core under attack alerts  
+    * Picked up 1 Item notifications
+
+### 4 · Build & Resolution Fixes
+1. **Player Settings → Default Resolution** set to **1600 × 900**.  
+2.  Added both scenes (Level & GameOver) to Build Settings.  
+3. One test build → spotted mini‑HUD → cranked reference resolution; second build perfect.
+
+
+## Challenges & Debug Notes 🐛
+
+*Unity muted audio again.* 🥲 Turns out I’d clicked the speaker in Game view.  
+Cost: 15 min of “why are my sounds dead?”
+
+*NullReference in `GameMessageUI`* when switching scenes: forgot `DontDestroyOnLoad`.  
+Fixed with one line in `Awake()`.
+
+
+## Reflection
+
+Cutting enemy HP felt scary (“will it be too easy?”), but the playtest proved it: **fun > perfect balance**.  
+Adding HUD pop‑ups instantly clarified the flow; players no longer squint at the Console.  
+Biggest “aha” was how *resolution settings* can nuke a UI—even a great HUD looks awful at 640×480.  
+Lesson: always run a standalone build *before* the deadline.
+
+## Time Log (Toggl) ⏱️
+
+* Balancing passes: **4 h 10 m**  
+* SFX integration: **1 h 35 m**  
+* HUD message system: **2 h 20 m**  
+* Build tweaks & testing: **1 h 45 m**  
+
+**Total: 9 h 50 m** this week
+
+---
+
+Thanks for a great semester!
