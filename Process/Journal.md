@@ -1134,9 +1134,8 @@ Now that the core logic has been implemented, stress testing the core loop ASAP 
 - [Link to Project](link)
 - [Link to Project Media](https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject)
 
-
 # Week 12 – Final Polish & Build Prep  
-*(Iterative Prototype 3 / Release Candidate)*
+*(Iterative Prototype 5 / Release Candidate)*
 
 > **Journal prompt:** What last‑minute changes did we make, why, and how did we wrap everything into a playable build?
 
@@ -1168,9 +1167,9 @@ Now that the core logic has been implemented, stress testing the core loop ASAP 
 3. One test build → spotted mini‑HUD → cranked reference resolution; second build perfect.
 
 
-## Challenges & Debug Notes 🐛
+## Challenges & Debug Notes
 
-*Unity muted audio again.* 🥲 Turns out I’d clicked the speaker in Game view.  
+*Unity muted audio again.* Turns out I’d clicked the speaker in Game view.  
 Cost: 15 min of “why are my sounds dead?”
 
 *NullReference in `GameMessageUI`* when switching scenes: forgot `DontDestroyOnLoad`.  
@@ -1184,7 +1183,7 @@ Adding HUD pop‑ups instantly clarified the flow; players no longer squint at t
 Biggest “aha” was how *resolution settings* can nuke a UI—even a great HUD looks awful at 640×480.  
 Lesson: always run a standalone build *before* the deadline.
 
-## Time Log (Toggl) ⏱️
+## Time Log (Toggl) 
 
 * Balancing passes: **4 h 10 m**  
 * SFX integration: **1 h 35 m**  
