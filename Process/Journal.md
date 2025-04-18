@@ -1140,7 +1140,7 @@ Now that the core logic has been implemented, stress testing the core loop ASAP 
 > **Journal prompt:** What last‑minute changes did we make, why, and how did we wrap everything into a playable build?
 
 
-## What Changed This Week 🛠️
+## What Changed This Week
 
 ### 1 · Sound FX Pass
 * Imported spell clip for projectiles
