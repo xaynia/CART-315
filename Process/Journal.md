@@ -1161,7 +1161,10 @@ Now that the core logic has been implemented, stress testing the core loop ASAP 
     * Core under attack alerts  
     * Picked up 1 Item notifications
 
-### 4 · Build & Resolution Fixes
+### 4 · Playability / UX
+* Instead of the player having to manually press I to start each round, now the first round kicks off after the global message system counts down. Afterwards the following waves continue to auto spawn once all enemies in the previous wave are defeated.
+
+### 5 · Build & Resolution Fixes
 1. **Player Settings → Default Resolution** set to **1600 × 900**.  
 2.  Added both scenes (Level & GameOver) to Build Settings.  
 3. One test build → spotted mini‑HUD → cranked reference resolution; second build perfect.
