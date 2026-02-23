@@ -1,14 +1,16 @@
-# CART 315: Game Prototyping | *Winter 2025*
 
-## Process
+# CART 315 - Game Prototyping (Winter 2025)
 
-- [Journal](Process/Journal.md)
-  - [Image & Notes Log](Process/Images)
+## Start Here
+- Highlights: [HIGHLIGHTS.md](HIGHLIGHTS.md)
+- Final Project Journal (Weeks 7-12): [Process/GhoulRush_Journal.md](Process/GhoulRush_Journal.md)
 
 ## Final Project: Ghoul Rush (team of 2)
-Final Unity project repo (team):
-https://github.com/Noe235/CART315FinalProject
+Team repo: https://github.com/Noe235/CART315FinalProject
 
-## Projects
+## Documentation
+- Full class journal (Weeks 1-12): [Process/Journal.md](Process/Journal.md)
+- Image and notes log: [Process/Images](Process/Images)
 
+## Coursework Projects
 - [Projects](Projects)
